@@ -596,7 +596,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 38px;
+      gap: 24px;
     }
 
     .nav-links a {
@@ -2756,17 +2756,118 @@
     }
     /* 4-col pricing responsive */
     @media(max-width:1300px) {
-      .pricing-grid[style*="repeat(4"] {
+      .pricing-grid {
         grid-template-columns: repeat(2,1fr) !important;
+        max-width: 100% !important;
       }
     }
     @media(max-width:700px) {
-      .pricing-grid[style*="repeat(4"] {
+      .pricing-grid {
         grid-template-columns: 1fr !important;
+        max-width: 480px !important;
+        margin: 0 auto !important;
       }
     }
 
-    /* ================================================================ SCROLL TOP */
+    /* ================================================================ TERMINOLOGY SECTION */
+    .terminology-section {
+      padding: 100px 0;
+      position: relative;
+      z-index: 2;
+      background: var(--bg2);
+    }
+    .terminology-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 52px;
+    }
+    .term-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      box-shadow: var(--sh);
+      border: 1.5px solid var(--border-s);
+      padding: 28px 30px;
+      transition: var(--t);
+      position: relative;
+      overflow: hidden;
+    }
+    .term-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(150deg, rgba(255,255,255,0.4) 0%, transparent 55%);
+      pointer-events: none;
+      border-radius: inherit;
+    }
+    [data-theme="dark"] .term-card::before {
+      background: linear-gradient(150deg, rgba(255,255,255,0.03) 0%, transparent 55%);
+    }
+    .term-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sh-d);
+    }
+    .term-term {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .term-term i {
+      font-size: 13px;
+      color: var(--accent);
+    }
+    .term-def {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+      position: relative;
+      z-index: 1;
+    }
+    @media(max-width:900px) {
+      .terminology-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media(max-width:600px) {
+      .terminology-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================================ EXTRA RESPONSIVE FIXES */
+    @media(max-width:600px) {
+      .hero-cta-group { justify-content: center; }
+      .about-inner { gap: 36px; }
+      .about-visual { height: auto; min-height: 340px; }
+      .about-img-main { width: 240px; height: 280px; position: relative; }
+      .about-img-sec { display: none; }
+      .about-visual { display: flex; justify-content: center; }
+      .showcase-phones { height: 320px; }
+      .showcase-phone-main { width: 180px; }
+      .contact-inner { gap: 36px; }
+      .hero-right { height: 380px; }
+      .section-title { font-size: clamp(28px, 7vw, 42px); }
+      .features-section, .portfolio-section, .showcase-section,
+      .about-section, .testimonials-section, .pricing-section,
+      .contact-section, .terminology-section { padding: 72px 0; }
+      .portfolio-grid { gap: 18px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-bottom-links { flex-wrap: wrap; gap: 12px; }
+      .nav-logo-sub { display: none; }
+      .lang-switcher { padding: 4px 5px; }
+      .lang-btn { padding: 4px 8px; font-size: 9px; }
+      .theme-toggle { width: 36px; height: 36px; font-size: 13px; }
+    }
+    @media(max-width:400px) {
+      .container { padding: 0 14px; }
+      .hero-badge { font-size: 9px; padding: 8px 16px; }
+      .btn-primary, .btn-secondary { padding: 13px 24px; font-size: 11px; }
+    }
     .scroll-top {
       position: fixed;
       bottom: 36px;
@@ -2889,11 +2990,6 @@
         display: none;
       }
 
-      .nav-links,
-      .nav-right .btn-primary {
-        display: none;
-      }
-
       .hamburger {
         display: flex;
       }
@@ -2913,6 +3009,9 @@
       }
 
       .lang-switcher {
+        display: flex;
+      }
+      .nav-right .btn-primary {
         display: none;
       }
     }
@@ -2993,12 +3092,13 @@
           </div>
         </a>
         <ul class="nav-links" role="list">
-          <li><a href="#features">Features</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#showcase">Showcase</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#features" data-i18n="nav.features">Features</a></li>
+          <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+          <li><a href="#showcase" data-i18n="nav.showcase">Showcase</a></li>
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+          <li><a href="#terminology" data-i18n="nav.terminology">Terminology</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
         <div class="nav-right">
           <!-- Language Switcher -->
@@ -3012,7 +3112,7 @@
             <i class="fa-solid fa-moon" id="themeIcon"></i>
           </button>
           <a href="#contact" class="btn-primary" style="padding:12px 26px;font-size:11px;">
-            <i class="fa-solid fa-rocket" aria-hidden="true"></i> Get Started
+            <i class="fa-solid fa-rocket" aria-hidden="true"></i> <span data-i18n="hero.cta">Get Started</span>
           </a>
           <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -3029,6 +3129,7 @@
     <a href="#showcase" class="mobile-nav-link" data-i18n="nav.showcase">Showcase</a>
     <a href="#about" class="mobile-nav-link" data-i18n="nav.about">About</a>
     <a href="#pricing" class="mobile-nav-link" data-i18n="nav.pricing">Pricing</a>
+    <a href="#terminology" class="mobile-nav-link" data-i18n="nav.terminology">Terminology</a>
     <a href="#contact" class="mobile-nav-link" data-i18n="nav.contact">Contact</a>
     <div class="mobile-lang">
       <button class="lang-btn active" data-lang="en">EN</button>
@@ -3148,12 +3249,11 @@
     <div class="container">
       <div class="features-header">
         <div>
-          <div class="section-label reveal">Platform Features</div>
-          <h2 class="section-title reveal delay-1" id="features-title">Everything You Need to<br>Modernize Your Menu
-          </h2>
+          <div class="section-label reveal" data-i18n="features.label">Platform Features</div>
+          <h2 class="section-title reveal delay-1" id="features-title" data-i18n="features.title">Everything You Need to<br>Modernize Your Menu</h2>
         </div>
         <div class="features-header-right">
-          <p class="section-subtitle reveal delay-2">A complete suite of tools designed for the hospitality industry —
+          <p class="section-subtitle reveal delay-2" data-i18n="features.subtitle">A complete suite of tools designed for the hospitality industry —
             built for owners, loved by guests.</p>
         </div>
       </div>
@@ -3219,8 +3319,8 @@
           <div class="section-label reveal">
             <i class="fa-solid fa-layer-group" aria-hidden="true"></i> Our Work
           </div>
-          <h2 class="section-title reveal delay-1" id="portfolio-title">Previous Websites<br>We've Built</h2>
-          <p class="section-subtitle reveal delay-2">A selection of digital experiences crafted for hospitality
+          <h2 class="section-title reveal delay-1" id="portfolio-title" data-i18n="portfolio.title">Previous Websites<br>We've Built</h2>
+          <p class="section-subtitle reveal delay-2" data-i18n="portfolio.subtitle">A selection of digital experiences crafted for hospitality
             businesses — from intimate cafés to international hotel brands.</p>
         </div>
         <div class="reveal delay-3" style="margin-top:auto;padding-bottom:4px;">
@@ -3354,8 +3454,8 @@
         </div>
         <div class="reveal-right">
           <div class="section-label">Live Showcase</div>
-          <h2 class="section-title" id="showcase-title">Beautiful Menus for Every Venue</h2>
-          <p class="section-subtitle">From intimate cafés to luxury hotel chains, our digital menu platform adapts to
+          <h2 class="section-title" id="showcase-title" data-i18n="showcase.title">Beautiful Menus for Every Venue</h2>
+          <p class="section-subtitle" data-i18n="showcase.subtitle">From intimate cafés to luxury hotel chains, our digital menu platform adapts to
             your brand identity — visually stunning on every device.</p>
           <div class="showcase-text-list">
             <div class="showcase-text-item reveal delay-1">
@@ -3417,24 +3517,24 @@
         </div>
         <div class="reveal-right">
           <div class="section-label">Our Story</div>
-          <h2 class="section-title" id="about-title">Built for Ethiopian Businesses by People Who Love This Industry</h2>
-          <p class="section-subtitle">We started AK Digital-Marketing in Adama, Ethiopia after seeing how many incredible restaurants were losing customers to outdated paper menus. We built a platform that makes digital transformation effortless — no tech skills required.</p>
+          <h2 class="section-title" id="about-title" data-i18n="about.title">Built for Ethiopian Businesses by People Who Love This Industry</h2>
+          <p class="section-subtitle" data-i18n="about.subtitle">We started AK Digital-Marketing in Adama, Ethiopia after seeing how many incredible restaurants were losing customers to outdated paper menus. We built a platform that makes digital transformation effortless — no tech skills required.</p>
           <div class="about-stats-grid" role="list">
             <div class="about-stat-card reveal delay-1" role="listitem">
               <div class="about-stat-num"><span class="counter" data-target="20">0</span>+</div>
-              <div class="about-stat-label">Businesses Served</div>
+              <div class="about-stat-label" data-i18n="about.stat1">Businesses Served</div>
             </div>
             <div class="about-stat-card reveal delay-2" role="listitem">
               <div class="about-stat-num"><span class="counter" data-target="3">0</span></div>
-              <div class="about-stat-label">Languages Supported</div>
+              <div class="about-stat-label" data-i18n="about.stat2">Languages Supported</div>
             </div>
             <div class="about-stat-card reveal delay-3" role="listitem">
               <div class="about-stat-num"><span class="counter" data-target="24">0</span>h</div>
-              <div class="about-stat-label">Go Live Timeframe</div>
+              <div class="about-stat-label" data-i18n="about.stat3">Go Live Timeframe</div>
             </div>
             <div class="about-stat-card reveal delay-4" role="listitem">
               <div class="about-stat-num"><span class="counter" data-target="98">0</span>%</div>
-              <div class="about-stat-label">Client Satisfaction</div>
+              <div class="about-stat-label" data-i18n="about.stat4">Client Satisfaction</div>
             </div>
           </div>
         </div>
@@ -3554,8 +3654,8 @@
       <div style="text-align:center;max-width:580px;margin:0 auto;position:relative;z-index:1;">
         <div class="section-label reveal" style="justify-content:center;"><i class="fa-solid fa-tag"
             aria-hidden="true"></i> Transparent Pricing</div>
-        <h2 class="section-title reveal delay-1" id="pricing-title">Simple Plans for Every Business</h2>
-        <p class="section-subtitle reveal delay-2" style="margin:0 auto;text-align:center;">Elevating your customers' experience one scan at a time. One-time setup, free updates included.</p>
+        <h2 class="section-title reveal delay-1" id="pricing-title" data-i18n="pricing.title">Simple Plans for Every Business</h2>
+        <p class="section-subtitle reveal delay-2" style="margin:0 auto;text-align:center;" data-i18n="pricing.subtitle">Elevating your customers' experience one scan at a time. One-time setup, free updates included.</p>
       </div>
       <div style="margin-top:48px;"></div>
       <div class="pricing-grid" style="grid-template-columns:repeat(4,1fr);max-width:100%;">
@@ -3653,14 +3753,61 @@
 
   <div class="section-divider" aria-hidden="true"></div>
 
-  <!-- ================================================================ CONTACT -->
+  <!-- ================================================================ TERMINOLOGIES -->
+  <section class="terminology-section" id="terminology" aria-labelledby="terminology-title">
+    <div class="container">
+      <div style="max-width:640px;">
+        <div class="section-label reveal"><i class="fa-solid fa-book-open" aria-hidden="true"></i> <span data-i18n="term.label">Key Terminology</span></div>
+        <h2 class="section-title reveal delay-1" id="terminology-title" data-i18n="term.title">Understanding Digital Menu Solutions</h2>
+        <p class="section-subtitle reveal delay-2" data-i18n="term.subtitle">New to QR menus? Here are the key terms you'll encounter when working with us.</p>
+      </div>
+      <div class="terminology-grid">
+        <div class="term-card reveal delay-1">
+          <div class="term-term"><i class="fa-solid fa-qrcode"></i> <span data-i18n="term.qr.term">QR Code</span></div>
+          <div class="term-def" data-i18n="term.qr.def">A scannable 2D barcode customers point their phone camera at to instantly open your digital menu — no app download needed.</div>
+        </div>
+        <div class="term-card reveal delay-2">
+          <div class="term-term"><i class="fa-solid fa-mobile-screen"></i> <span data-i18n="term.digitalmenu.term">Digital Menu</span></div>
+          <div class="term-def" data-i18n="term.digitalmenu.def">A fully interactive, web-based version of your menu that opens on any smartphone. Update prices, items, and photos in real time without reprinting.</div>
+        </div>
+        <div class="term-card reveal delay-3">
+          <div class="term-term"><i class="fa-solid fa-globe"></i> <span data-i18n="term.multilang.term">Multi-Language</span></div>
+          <div class="term-def" data-i18n="term.multilang.def">Your menu displayed in multiple languages (e.g. English, Amharic, Afan Oromo) so every guest can browse in their preferred language.</div>
+        </div>
+        <div class="term-card reveal delay-1">
+          <div class="term-term"><i class="fa-solid fa-leaf"></i> <span data-i18n="term.fasting.term">Fasting / Non-Fasting Filter</span></div>
+          <div class="term-def" data-i18n="term.fasting.def">A one-tap filter that shows only fasting-friendly (vegan/Orthodox) or non-fasting dishes — essential for Ethiopian hospitality businesses.</div>
+        </div>
+        <div class="term-card reveal delay-2">
+          <div class="term-term"><i class="fa-solid fa-palette"></i> <span data-i18n="term.branding.term">Custom Branding</span></div>
+          <div class="term-def" data-i18n="term.branding.def">Your logo, brand colors, and typography applied to your digital menu so it looks and feels like your business — not a generic template.</div>
+        </div>
+        <div class="term-card reveal delay-3">
+          <div class="term-term"><i class="fa-solid fa-rotate"></i> <span data-i18n="term.updates.term">Free Updates</span></div>
+          <div class="term-def" data-i18n="term.updates.def">During your update period, we handle all menu changes, price edits, and new item additions — no extra fees, no waiting.</div>
+        </div>
+        <div class="term-card reveal delay-1">
+          <div class="term-term"><i class="fa-solid fa-chart-line"></i> <span data-i18n="term.analytics.term">Analytics Dashboard</span></div>
+          <div class="term-def" data-i18n="term.analytics.def">A panel showing how many times your menu was scanned, which items were viewed most, and peak hours — helping you make smarter business decisions.</div>
+        </div>
+        <div class="term-card reveal delay-2">
+          <div class="term-term"><i class="fa-solid fa-wifi"></i> <span data-i18n="term.pwa.term">PWA (Progressive Web App)</span></div>
+          <div class="term-def" data-i18n="term.pwa.def">Technology that lets your menu load even with poor or no internet connection, so guests always see your full menu regardless of signal quality.</div>
+        </div>
+        <div class="term-card reveal delay-3">
+          <div class="term-term"><i class="fa-solid fa-tag"></i> <span data-i18n="term.onetime.term">One-Time Setup Fee</span></div>
+          <div class="term-def" data-i18n="term.onetime.def">You pay once for your digital menu to be built and launched. There are no monthly subscriptions — just optional renewal for extended free updates.</div>
+        </div>
+      </div>
+    </div>
+  </section>
   <section class="contact-section" id="contact" aria-labelledby="contact-title">
     <div class="container">
       <div class="contact-inner">
         <div>
-          <div class="section-label reveal"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Get In Touch</div>
-          <h2 class="section-title reveal delay-1" id="contact-title">Let's Transform Your Business Together</h2>
-          <p class="section-subtitle reveal delay-2">Have questions? Ready to launch? Our team typically responds within
+          <div class="section-label reveal"><i class="fa-solid fa-envelope" aria-hidden="true"></i> <span data-i18n="contact.label">Get In Touch</span></div>
+          <h2 class="section-title reveal delay-1" id="contact-title" data-i18n="contact.title">Let's Transform Your Business Together</h2>
+          <p class="section-subtitle reveal delay-2" data-i18n="contact.subtitle">Have questions? Ready to launch? Our team typically responds within
             2 hours during business hours.</p>
           <div class="contact-info-items">
             <div class="contact-info-item reveal delay-1">
@@ -3702,24 +3849,24 @@
           <form class="contact-form" id="contactForm" novalidate>
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="name">Full Name *</label>
+                <label class="form-label" for="name" data-i18n="form.name">Full Name *</label>
                 <input class="form-input" type="text" id="name" name="name" placeholder="John Smith" required
                   autocomplete="name" />
               </div>
               <div class="form-group">
-                <label class="form-label" for="email">Email Address *</label>
+                <label class="form-label" for="email" data-i18n="form.email">Email Address *</label>
                 <input class="form-input" type="email" id="email" name="email" placeholder="john@example.com" required
                   autocomplete="email" />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" for="business">Business Name</label>
+                <label class="form-label" for="business" data-i18n="form.business">Business Name</label>
                 <input class="form-input" type="text" id="business" name="business" placeholder="Your Restaurant"
                   autocomplete="organization" />
               </div>
               <div class="form-group">
-                <label class="form-label" for="venue">Venue Type</label>
+                <label class="form-label" for="venue" data-i18n="form.venue">Venue Type</label>
                 <select class="form-select" id="venue" name="venue">
                   <option value="">Select type...</option>
                   <option>Restaurant</option>
@@ -3733,13 +3880,13 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label" for="message">Message *</label>
+              <label class="form-label" for="message" data-i18n="form.message">Message *</label>
               <textarea class="form-textarea" id="message" name="message"
                 placeholder="Tell us about your business and what you're looking for..." required></textarea>
             </div>
             <div class="form-submit">
               <button type="submit" class="btn-primary">
-                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send Message
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> <span data-i18n="form.send">Send Message</span>
               </button>
             </div>
           </form>
@@ -3840,31 +3987,148 @@
     /* ---- i18n ---- */
     const translations = {
       en: {
+        /* NAV */
         'nav.features': 'Features', 'nav.portfolio': 'Portfolio', 'nav.showcase': 'Showcase',
-        'nav.about': 'About', 'nav.pricing': 'Pricing', 'nav.contact': 'Contact',
+        'nav.about': 'About', 'nav.pricing': 'Pricing', 'nav.contact': 'Contact', 'nav.terminology': 'Terminology',
+        /* HERO */
         'hero.badge': 'QR Digital Menu Technology',
         'hero.headline1': 'The Future of', 'hero.headline2': 'Dining Experiences', 'hero.headline3': ' is Here.',
         'hero.sub': 'Transform your restaurant, café, or hotel with our premium QR-based digital menu platform. Captivate guests, boost orders, and modernize your brand — one scan at a time.',
         'hero.cta': 'Launch Your Menu', 'hero.cta2': 'See It Live',
-        'stats.businesses': 'Businesses Served', 'stats.satisfaction': 'Client Satisfaction', 'stats.scans': 'Scans Monthly',
+        /* STATS */
+        'stats.businesses': 'Businesses Served', 'stats.satisfaction': 'Client Satisfaction', 'stats.scans': 'Go Live In',
+        /* FEATURES */
+        'features.label': 'Platform Features',
+        'features.title': 'Everything You Need to<br>Modernize Your Menu',
+        'features.subtitle': 'A complete suite of tools designed for the hospitality industry — built for owners, loved by guests.',
+        /* PORTFOLIO */
+        'portfolio.title': "Previous Websites<br>We've Built",
+        'portfolio.subtitle': 'A selection of digital experiences crafted for hospitality businesses — from intimate cafés to international hotel brands.',
+        /* SHOWCASE */
+        'showcase.title': 'Beautiful Menus for Every Venue',
+        'showcase.subtitle': 'From intimate cafés to luxury hotel chains, our digital menu platform adapts to your brand identity — visually stunning on every device.',
+        /* ABOUT */
+        'about.title': 'Built for Ethiopian Businesses by People Who Love This Industry',
+        'about.subtitle': 'We started AK Digital-Marketing in Adama, Ethiopia after seeing how many incredible restaurants were losing customers to outdated paper menus. We built a platform that makes digital transformation effortless — no tech skills required.',
+        'about.stat1': 'Businesses Served', 'about.stat2': 'Languages Supported', 'about.stat3': 'Go Live Timeframe', 'about.stat4': 'Client Satisfaction',
+        /* PRICING */
+        'pricing.title': 'Simple Plans for Every Business',
+        'pricing.subtitle': "Elevating your customers' experience one scan at a time. One-time setup, free updates included.",
+        /* CONTACT */
+        'contact.label': 'Get In Touch',
+        'contact.title': "Let's Transform Your Business Together",
+        'contact.subtitle': 'Have questions? Ready to launch? Our team typically responds within 2 hours during business hours.',
+        /* FORM */
+        'form.name': 'Full Name *', 'form.email': 'Email Address *', 'form.business': 'Business Name',
+        'form.venue': 'Venue Type', 'form.message': 'Message *', 'form.send': 'Send Message',
+        /* TERMINOLOGY */
+        'term.label': 'Key Terminology', 'term.title': 'Understanding Digital Menu Solutions',
+        'term.subtitle': "New to QR menus? Here are the key terms you'll encounter when working with us.",
+        'term.qr.term': 'QR Code', 'term.qr.def': "A scannable 2D barcode customers point their phone camera at to instantly open your digital menu — no app download needed.",
+        'term.digitalmenu.term': 'Digital Menu', 'term.digitalmenu.def': 'A fully interactive, web-based version of your menu that opens on any smartphone. Update prices, items, and photos in real time without reprinting.',
+        'term.multilang.term': 'Multi-Language', 'term.multilang.def': 'Your menu displayed in multiple languages (e.g. English, Amharic, Afan Oromo) so every guest can browse in their preferred language.',
+        'term.fasting.term': 'Fasting / Non-Fasting Filter', 'term.fasting.def': 'A one-tap filter that shows only fasting-friendly (vegan/Orthodox) or non-fasting dishes — essential for Ethiopian hospitality businesses.',
+        'term.branding.term': 'Custom Branding', 'term.branding.def': 'Your logo, brand colors, and typography applied to your digital menu so it looks and feels like your business — not a generic template.',
+        'term.updates.term': 'Free Updates', 'term.updates.def': 'During your update period, we handle all menu changes, price edits, and new item additions — no extra fees, no waiting.',
+        'term.analytics.term': 'Analytics Dashboard', 'term.analytics.def': 'A panel showing how many times your menu was scanned, which items were viewed most, and peak hours — helping you make smarter business decisions.',
+        'term.pwa.term': 'PWA (Progressive Web App)', 'term.pwa.def': 'Technology that lets your menu load even with poor or no internet connection, so guests always see your full menu regardless of signal quality.',
+        'term.onetime.term': 'One-Time Setup Fee', 'term.onetime.def': 'You pay once for your digital menu to be built and launched. There are no monthly subscriptions — just optional renewal for extended free updates.',
       },
       am: {
+        /* NAV */
         'nav.features': 'ባህሪያት', 'nav.portfolio': 'ፖርትፎሊዮ', 'nav.showcase': 'ማሳያ',
-        'nav.about': 'ስለ እኛ', 'nav.pricing': 'ዋጋ', 'nav.contact': 'ያግኙን',
+        'nav.about': 'ስለ እኛ', 'nav.pricing': 'ዋጋ', 'nav.contact': 'ያግኙን', 'nav.terminology': 'ቃላት',
+        /* HERO */
         'hero.badge': 'QR ዲጂታል ምናሌ ቴክኖሎጂ',
         'hero.headline1': 'የምግብ ቤቶች', 'hero.headline2': 'ወደፊቱ', 'hero.headline3': ' ደረሰ።',
         'hero.sub': 'ሬስቶራንትዎን፣ ካፌዎን ወይም ሆቴልዎን በ QR ዲጂታል ምናሌ ስርዓታችን ቀይሩ። እንግዶቻቸውን ማረኩ፣ ትዕዛዞቹን ጨምሩ።',
         'hero.cta': 'ምናሌዎን ያስጀምሩ', 'hero.cta2': 'ቀጥታ ይመልከቱ',
-        'stats.businesses': 'ሰርቻቸዋለሁ', 'stats.satisfaction': 'የደንበኛ እርካታ', 'stats.scans': 'ወርሃዊ ቅኝቶች',
+        /* STATS */
+        'stats.businesses': 'ያገለገሉ ንግዶች', 'stats.satisfaction': 'የደንበኛ እርካታ', 'stats.scans': 'ቀጥታ ለመሄድ',
+        /* FEATURES */
+        'features.label': 'የፕላትፎርም ባህሪያት',
+        'features.title': 'ምናሌዎን ዘመናዊ ለማድረግ<br>የሚያስፈልግዎ ሁሉ',
+        'features.subtitle': 'ለሆስፒታሊቲ ኢንዱስትሪ የተነደፈ ሙሉ የመሳሪያ ስብስብ — ለባለቤቶች የተሰራ፣ በእንግዶች የሚወደድ።',
+        /* PORTFOLIO */
+        'portfolio.title': 'የቀደሙ<br>ድህረ ገጾቻችን',
+        'portfolio.subtitle': 'ለሆስፒታሊቲ ንግዶች የተፈጠሩ ዲጂታል ልምዶች ምርጫ — ከትንንሽ ካፌዎች እስከ ዓለም አቀፍ ሆቴሎች።',
+        /* SHOWCASE */
+        'showcase.title': 'ለእያንዳንዱ ቦታ ቆንጆ ምናሌዎች',
+        'showcase.subtitle': 'ከትንንሽ ካፌዎች እስከ ሊዝ ሆቴሎች፣ ዲጂታል ምናሌ ፕላትፎርማችን ለብራንድ ማንነትዎ ይለዋወጣል።',
+        /* ABOUT */
+        'about.title': 'ለኢትዮጵያ ንግዶች ከዚህ ዘርፍ ፍቅር ያላቸው ሰዎች',
+        'about.subtitle': 'AK Digital-Marketing ን አዳማ ኢትዮጵያ ውስጥ የጀመርነው ብዙ ድንቅ ሬስቶራንቶች ጊዜ ያለፈባቸው ወረቀት ምናሌዎች ምክንያት ደንበኞቻቸውን ሲያጡ ካየን በኋላ ነው።',
+        'about.stat1': 'ያገለገሉ ንግዶች', 'about.stat2': 'የሚደገፉ ቋንቋዎች', 'about.stat3': 'ቀጥታ ለመሄድ', 'about.stat4': 'የደንበኛ እርካታ',
+        /* PRICING */
+        'pricing.title': 'ለእያንዳንዱ ንግድ ቀላል ዕቅዶች',
+        'pricing.subtitle': 'የደንበኞችዎን ልምድ በአንድ ቅኝት ጊዜ ያሻሽሉ። አንድ ጊዜ ክፍያ፣ ነፃ ዝማኔዎች ተካትተዋል።',
+        /* CONTACT */
+        'contact.label': 'ያግኙን',
+        'contact.title': 'ንግድዎን አብረን እንቀይር',
+        'contact.subtitle': 'ጥያቄዎች አሉዎት? ለመጀመር ዝግጁ ነዎት? ቡድናችን በስራ ሰዓታት ውስጥ ብዙውን ጊዜ በ2 ሰዓት ውስጥ ይመልሳል።',
+        /* FORM */
+        'form.name': 'ሙሉ ስም *', 'form.email': 'ኢሜይል አድራሻ *', 'form.business': 'የንግድ ስም',
+        'form.venue': 'የቦታ አይነት', 'form.message': 'መልእክት *', 'form.send': 'መልእክት ይላኩ',
+        /* TERMINOLOGY */
+        'term.label': 'ቁልፍ ቃላት', 'term.title': 'ዲጂታል ምናሌ መፍትሄዎችን መረዳት',
+        'term.subtitle': 'ለ QR ምናሌዎች አዲስ ነዎት? ከእኛ ጋር ሲሰሩ የሚያጋጥሙዎትን ቁልፍ ቃላቶች ይኸውና።',
+        'term.qr.term': 'QR ኮድ', 'term.qr.def': 'ደንበኞች የስልክ ካሜራቸውን ወዳት ያሳዩት ቅኝት የሚደረግ 2D ባርኮድ — ምንም አፕ ማውረድ አያስፈልግም።',
+        'term.digitalmenu.term': 'ዲጂታል ምናሌ', 'term.digitalmenu.def': 'በማንኛውም ስማርትፎን ላይ የሚከፈት የምናሌዎ ሙሉ ተግባራዊ ድህረ ገጽ ስሪት። ዋጋዎቹን፣ አይቴሞቹን እና ፎቶዎቹን ወዲያውኑ ያዘምኑ።',
+        'term.multilang.term': 'ብዙ ቋንቋ', 'term.multilang.def': 'ምናሌዎ በብዙ ቋንቋዎች (ለምሳሌ እንግሊዝኛ፣ አማርኛ፣ አፋን ኦሮሞ) ስለሚታይ እያንዳንዱ እንግዳ በሚፈልገው ቋንቋ ማሰስ ይችላል።',
+        'term.fasting.term': 'ጾም / ጾም ያልሆነ ፊልተር', 'term.fasting.def': 'የጾም ምግቦችን ብቻ ወይም ጾም ያልሆኑ ምግቦችን ብቻ ለማሳየት አንድ ጊዜ ንካ ፊልተር — ለኢትዮጵያ ሆስፒታሊቲ ንግዶች አስፈላጊ።',
+        'term.branding.term': 'ብጁ ብራንዲንግ', 'term.branding.def': 'ሎጎዎ፣ የብራንድ ቀለሞችዎ እና ታይፖግራፊዎ ወደ ዲጂታል ምናሌዎ ተተግብረዋል — እንደ ንግድዎ ይመስላል።',
+        'term.updates.term': 'ነፃ ዝማኔዎች', 'term.updates.def': 'በዝማኔ ጊዜዎ ወቅት፣ ሁሉንም የምናሌ ለውጦች፣ የዋጋ ማስተካከያዎች እና አዲስ አይቴሞች ምንም ተጨማሪ ክፍያ ሳይኖር እናስተናግዳለን።',
+        'term.analytics.term': 'ትንታኔ ዳሽቦርድ', 'term.analytics.def': 'ምናሌዎ ስንት ጊዜ እንደተቀኘ፣ የትኞቹ አይቴሞች በጣም እንደተተዩ እና ከፍተኛ ሰዓቶቹን የሚያሳይ ፓናል።',
+        'term.pwa.term': 'PWA (ፕሮግሬሲቭ ድህረ ገጽ አፕ)', 'term.pwa.def': 'ምናሌዎ ደካማ ወይም ምንም ኢንተርኔት ግንኙነት ሳይኖር እንኳ እንዲጫን የሚፈቅድ ቴክኖሎጂ።',
+        'term.onetime.term': 'አንድ ጊዜ ክፍያ', 'term.onetime.def': 'ዲጂታል ምናሌዎ ለመገንባት እና ለማስጀመር አንድ ጊዜ ይከፍላሉ። ወርሃዊ ምዝገባዎች የሉም።',
       },
       or: {
+        /* NAV */
         'nav.features': 'Fiixiiwwan', 'nav.portfolio': 'Pookiriitwaa', 'nav.showcase': 'Agarsiisa',
-        'nav.about': 'Waa\'ee Keenya', 'nav.pricing': 'Gatii', 'nav.contact': 'Nu Quunnamaa',
+        'nav.about': "Waa'ee Keenya", 'nav.pricing': 'Gatii', 'nav.contact': 'Nu Quunnamaa', 'nav.terminology': 'Jechaalee',
+        /* HERO */
         'hero.badge': 'Teknolojii Meenuu QR Dijitaalaa',
         'hero.headline1': 'Futura', 'hero.headline2': 'Teessoo Nyaataa', 'hero.headline3': ' Dhufee.',
         'hero.sub': 'Reestoorantii, kaafee, ykn hootelii keessan siistema meenuu QR dijitaalaa keenyaan jijjiiraa. Keessummootaaf hawwannoo uumii.',
         'hero.cta': 'Meenuu Kee Jalqabi', 'hero.cta2': 'Kallattii Ilaali',
-        'stats.businesses': 'Daldalli Tajaajilame', 'stats.satisfaction': 'Gammachuu Maamiltootaa', 'stats.scans': 'Iskanii Ji\'aa',
+        /* STATS */
+        'stats.businesses': 'Daldalli Tajaajilame', 'stats.satisfaction': 'Gammachuu Maamiltootaa', 'stats.scans': 'Kallattii Deemuu',
+        /* FEATURES */
+        'features.label': 'Fiixiiwwan Platformii',
+        'features.title': 'Meenuu Keessan Ammayyeessuuf<br>Kan Barbaaddan Hundumaa',
+        'features.subtitle': 'Industirii keessummummaaf qophaa\'e toora meeshaalee guutuu — abbootii biznasaaf ijaarame, keessummootaan jaalatama.',
+        /* PORTFOLIO */
+        'portfolio.title': "Websaayitii Duraan<br>Ijaarre",
+        'portfolio.subtitle': 'Biznasoota keessummummaa gargaaruf uumaman muuxannoo dijitaalaa filatamoo — kaafee xiqqaa hanga biraanda hootelii addunyaa.',
+        /* SHOWCASE */
+        'showcase.title': 'Bakka Hundaaf Meenuu Miidhagoo',
+        'showcase.subtitle': 'Kaafee xiqqaa hanga hootelii sadarkaa olaanaatti, platformiin meenuu dijitaalaa keenya eenyummaa biraanda keessaniif sirna.',
+        /* ABOUT */
+        'about.title': 'Biznasii Itoophiyaaf Namoota Industirii Kana Jaallatan Irraa',
+        'about.subtitle': 'AK Digital-Marketing Adaamaatti jalqabne erga restoraantoonni hedduun meenuu waraqaa durii tiin maamiltoota dhaban argaa erga turre booda.',
+        'about.stat1': 'Daldalli Tajaajilame', 'about.stat2': 'Afaanoti Deeggaraman', 'about.stat3': 'Sa\'aatii Kallattii', 'about.stat4': 'Gammachuu Maamiltootaa',
+        /* PRICING */
+        'pricing.title': 'Karoora Salphaa Biznasoota Hundaaf',
+        'pricing.subtitle': 'Muuxannoo maamiltoota keessanii iskanii tokkoon guddisu. Kaffaltii tokko, haaraa ta\'uu bilisaa dabalata.',
+        /* CONTACT */
+        'contact.label': 'Nu Quunnamaa',
+        'contact.title': 'Biznaasa Keessan Waliin Jijjiiruu Haa Jalqabnu',
+        'contact.subtitle': 'Gaaffii qabduu? Eegaluu qophaa\'aa? Garee keenya sa\'aatii hojii keessatti sa\'aatii 2 keessatti deebisa.',
+        /* FORM */
+        'form.name': 'Maqaa Guutuu *', 'form.email': 'Teessoo Imeelii *', 'form.business': 'Maqaa Biznaasii',
+        'form.venue': 'Gosa Bakka', 'form.message': 'Ergaa *', 'form.send': 'Ergaa Ergi',
+        /* TERMINOLOGY */
+        'term.label': 'Jechaalee Ijoo', 'term.title': 'Furmaata Meenuu Dijitaalaa Hubachuu',
+        'term.subtitle': 'Meenuu QR irratti haaraa? Kan nu waliin hojjetan yeroo mudatan jechaalee ijoo asuma jiru.',
+        'term.qr.term': 'Koodii QR', 'term.qr.def': 'Maamiloonni kaameraa bilbilaa isaanii itti qaban baarkoodii 2D iskaneeffamuun meenuu dijitaalaa keessan battalumatti banuu — download app hin barbaachisu.',
+        'term.digitalmenu.term': 'Meenuu Dijitaalaa', 'term.digitalmenu.def': 'Imartaafoonii kamirrattuu banamu gosa meenuu keessanii guutummaatti walqunnamtii qabu. Gatii, wantoota fi suuraa yeroo dhugaa keessatti haaromsi.',
+        'term.multilang.term': 'Afaanota Heddu', 'term.multilang.def': 'Meenuu keessan afaanota hedduutti (fkn Ingiliffa, Amaaraa, Afaan Oromoo) muldhifama — keessummaan hundi afaan jaalatan keessatti ilaaluu danda\'a.',
+        'term.fasting.term': 'Fillannoo Sooma / Sooma Hin Taane', 'term.fasting.def': "Sooma midhaan qofa ykn midhaan sooma hin taane qofa agarsiisuu fillannoo tokko tuqi — biznasii keessummummaa Itoophiyaatiif barbaachisaa.",
+        'term.branding.term': 'Biraandii Dhuunfaa', 'term.branding.def': 'Mallattoo, halluu biraandii fi taayipoogiraafiin keessan meenuu dijitaalaa keessaniitti fayyadama — biznasii keessanitti fakkaata.',
+        'term.updates.term': 'Haaraa Ta\'uu Bilisaa', 'term.updates.def': 'Yeroo haaraa ta\'uu keessaniitti, jijjiirama meenuu hundumaa, sirreessaa gatii fi wantoota haaraa kaffaltii dabalataa malee ni harkifna.',
+        'term.analytics.term': 'Dhaabbata Xiinxalaa', 'term.analytics.def': 'Meenuu keessan meeqa iskaaneeffame, wantoonni kamtu hedduminaan ilaale fi sa\'aatii ol\'aanoo agarsiisu panel.',
+        'term.pwa.term': 'PWA (Appii Interneetii Tartiibaan)', 'term.pwa.def': 'Interneetii laafaa ykn takkayyuu hin jirre iyyuu meenuu keessan akka fe\'amu hayyamu teeknolojii.',
+        'term.onetime.term': 'Kaffaltii Tokkoffaa', 'term.onetime.def': 'Meenuu dijitaalaa keessan ijaaruuf fi jalqabuuf tokko kaffaltu. Maamiltummaa ji\'aa hin jiru.',
       }
     };
 
@@ -3874,8 +4138,12 @@
       const t = translations[lang] || translations.en;
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[key]) el.textContent = t[key];
+        if (t[key] !== undefined) {
+          // Use innerHTML to support <br> tags in translations
+          el.innerHTML = t[key];
+        }
       });
+      // Sync ALL lang buttons (desktop + mobile)
       document.querySelectorAll('.lang-btn').forEach(b => {
         b.classList.toggle('active', b.dataset.lang === lang);
         b.setAttribute('aria-pressed', b.dataset.lang === lang ? 'true' : 'false');
