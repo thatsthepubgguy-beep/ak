@@ -3,7 +3,12 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#F6FAFD" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#060E1A" media="(prefers-color-scheme: dark)" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <title>AK Digital-Marketing | QR Digital Menu Solutions</title>
   <meta name="description"
     content="Elevating your customers experience one scan at a time. Premium QR-based digital menu solutions for restaurants, cafés, lounges, and hotels." />
@@ -396,7 +401,7 @@
     .loader {
       position: fixed;
       inset: 0;
-      background: whitesmoke;
+      background: var(--bg);
       z-index: 9999;
       display: flex;
       align-items: center;
@@ -727,7 +732,7 @@
 
     .mobile-menu {
       position: fixed;
-      inset: 68px 0 0 0;
+      inset: 60px 0 0 0;
       background: rgba(246, 250, 253, 0.97);
       backdrop-filter: blur(36px);
       z-index: 999;
@@ -3021,7 +3026,7 @@
       }
 
       .hero-right {
-        height: 420px;
+        height: 380px;
         order: -1;
       }
 
@@ -3685,6 +3690,13 @@
       }
     }
 
+    @media (max-width: 900px) {
+      .feature-wide-inner {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+      }
+    }
+
     /* ---- 320px: Absolute minimum ---- */
     @media (max-width: 320px) {
       .container {
@@ -3706,6 +3718,492 @@
 
       .mobile-menu a {
         font-size: 20px;
+      }
+    }
+
+    /* ================================================================
+       MOBILE APP-LIKE STYLES — comprehensive mobile UX upgrades
+    ================================================================ */
+    @media (max-width: 900px) {
+
+      /* ---- Safe area support for notched phones ---- */
+      body {
+        padding-bottom: env(safe-area-inset-bottom, 0);
+      }
+
+      /* ---- Loader: app-style centered card ---- */
+      .loader {
+        background: var(--bg);
+      }
+
+      .loader-logo {
+        font-size: 26px;
+      }
+
+      /* ---- Navbar: compact app bar ---- */
+      .navbar {
+        background: rgba(246, 250, 253, 0.96);
+        backdrop-filter: blur(20px) saturate(160%);
+        -webkit-backdrop-filter: blur(20px) saturate(160%);
+        border-bottom: 1px solid var(--border);
+      }
+
+      [data-theme="dark"] .navbar {
+        background: rgba(6, 14, 26, 0.96);
+      }
+
+      .navbar-inner {
+        height: 60px;
+        padding: 0 4px;
+      }
+
+      /* ---- Mobile menu: full-screen overlay app drawer ---- */
+      .mobile-menu {
+        inset: 60px 0 0 0;
+        background: var(--bg);
+        padding: 48px 32px 40px;
+        gap: 0;
+        justify-content: flex-start;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      [data-theme="dark"] .mobile-menu {
+        background: var(--bg);
+      }
+
+      .mobile-menu a {
+        font-family: var(--serif);
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--ink);
+        padding: 14px 0;
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        letter-spacing: -0.02em;
+        transition: color 0.2s, padding-left 0.3s var(--ease-s);
+      }
+
+      .mobile-menu a:hover,
+      .mobile-menu a:active {
+        color: var(--accent);
+        padding-left: 8px;
+      }
+
+      .mobile-lang {
+        margin-top: 28px;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 10px;
+      }
+
+      .mobile-menu .btn-primary {
+        margin-top: 28px;
+        width: 100%;
+        justify-content: center;
+        padding: 16px 28px;
+        font-size: 13px;
+      }
+
+      /* ---- Hero section: app-style stacked layout ---- */
+      .hero {
+        padding-top: 60px;
+        min-height: 100svh;
+      }
+
+      .hero-content {
+        gap: 28px;
+        padding: 32px 0 40px;
+        text-align: center;
+      }
+
+      .hero-left {
+        align-items: center;
+        gap: 24px;
+      }
+
+      .hero-headline {
+        font-size: clamp(36px, 9vw, 54px);
+        letter-spacing: -0.035em;
+      }
+
+      .hero-sub {
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .hero-badge {
+        font-size: 10px;
+        padding: 9px 18px;
+      }
+
+      /* Hero stats: pill-style app metric row */
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        background: var(--surface);
+        border-radius: var(--r-pill);
+        box-shadow: var(--sh);
+        border: 1.5px solid var(--border-s);
+        padding: 14px 24px;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .hero-stat-item {
+        flex: 1;
+        position: relative;
+      }
+
+      .hero-stat-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: 32px;
+        background: var(--border);
+      }
+
+      .hero-stat-number {
+        font-size: 22px;
+      }
+
+      .hero-stat-label {
+        font-size: 9px;
+        margin-top: 3px;
+      }
+
+      .hero-cta-group {
+        gap: 12px;
+        width: 100%;
+        max-width: 360px;
+      }
+
+      .hero-cta-group .btn-primary,
+      .hero-cta-group .btn-secondary {
+        flex: 1;
+        justify-content: center;
+        padding: 15px 20px;
+        font-size: 11px;
+      }
+
+      /* ---- Section headers: app-style ---- */
+      .section-title {
+        font-size: clamp(28px, 7vw, 44px);
+        letter-spacing: -0.03em;
+      }
+
+      .section-label {
+        font-size: 10px;
+        letter-spacing: 0.18em;
+      }
+
+      /* ---- Features: scrollable horizontal chips on mobile ---- */
+      .features-header {
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+
+      .feature-card {
+        border-radius: 24px;
+        padding: 28px 24px;
+      }
+
+      .feature-card-wide > div {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+      }
+
+      /* ---- Portfolio cards: proper mobile stack ---- */
+      .portfolio-card {
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .portfolio-img-wrap {
+        aspect-ratio: 16/9;
+      }
+
+      /* Fix iframe preview scaling on small screens */
+      .portfolio-img-wrap iframe {
+        pointer-events: none;
+        transform: scale(0.5);
+        transform-origin: top left;
+        width: 200% !important;
+        height: 200% !important;
+        position: absolute;
+        inset: 0;
+        border: 0;
+      }
+
+      .portfolio-info {
+        padding: 20px 18px 22px;
+      }
+
+      .portfolio-title {
+        font-size: 15px;
+      }
+
+      .portfolio-desc {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* ---- Pricing: app-style card stack ---- */
+      .pricing-card {
+        border-radius: 24px;
+      }
+
+      .pricing-card.recommended {
+        transform: none;
+        border: 2px solid var(--accent);
+        box-shadow: 0 0 0 4px rgba(74, 127, 167, 0.12), var(--sh-d);
+      }
+
+      /* ---- Contact form: app input fields ---- */
+      .form-input,
+      .form-textarea,
+      .form-select {
+        border-radius: 14px;
+        padding: 15px 16px;
+        font-size: 14px;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      .form-input:focus,
+      .form-textarea:focus,
+      .form-select:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(74, 127, 167, 0.15);
+      }
+
+      /* ---- Footer: tidy mobile stack ---- */
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        padding: 20px 0;
+      }
+
+      .footer-bottom-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      /* ---- Scroll to top: app FAB position ---- */
+      .scroll-top {
+        bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+        right: 16px;
+        width: 48px;
+        height: 48px;
+        box-shadow: 0 8px 28px rgba(10, 25, 49, 0.22), 0 2px 8px rgba(74, 127, 167, 0.2);
+      }
+
+      /* ---- Testimonials: full-width cards ---- */
+      .testimonial-card {
+        min-width: 100%;
+        border-radius: 20px;
+      }
+
+      /* ---- Section dividers: thinner on mobile ---- */
+      .section-divider {
+        height: 1px;
+        margin: 0;
+      }
+
+      /* ---- Showcase section ---- */
+      .showcase-inner {
+        gap: 36px;
+      }
+
+      .showcase-text-item {
+        gap: 14px;
+        align-items: flex-start;
+      }
+
+      /* ---- About section ---- */
+      .about-inner {
+        gap: 36px;
+      }
+
+      /* ---- Touch feedback for interactive elements ---- */
+      .btn-primary:active,
+      .btn-secondary:active {
+        transform: scale(0.97) !important;
+        transition: transform 0.1s !important;
+      }
+
+      .feature-card:active,
+      .portfolio-card:active,
+      .pricing-card:active {
+        transform: scale(0.98) !important;
+        transition: transform 0.15s !important;
+      }
+
+      /* ---- Phone mockup in hero: tighter on mobile ---- */
+      .hero-right {
+        height: 340px;
+        margin-top: -8px;
+      }
+
+      .hero-phone {
+        width: 210px;
+      }
+
+      /* ---- Prevent horizontal overflow ---- */
+      section,
+      .container,
+      .hero,
+      .features-section,
+      .portfolio-section {
+        overflow-x: hidden;
+      }
+
+      /* ---- Better tap targets ---- */
+      .phone-add-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+      }
+
+      .slider-btn {
+        width: 48px;
+        height: 48px;
+      }
+
+      /* ---- Marquee: slightly larger on mobile ---- */
+      .marquee-item {
+        font-size: 12px;
+        padding: 0 28px;
+      }
+
+      /* ---- Fix feature-card-wide inner grid on mobile ---- */
+      .feature-card-wide {
+        grid-column: span 1;
+      }
+    }
+
+    /* ---- Additional 480px tweaks ---- */
+    @media (max-width: 480px) {
+      .navbar-inner {
+        height: 58px;
+      }
+
+      .mobile-menu {
+        inset: 58px 0 0 0;
+        padding: 36px 24px 32px;
+      }
+
+      .mobile-menu a {
+        font-size: 24px;
+        padding: 12px 0;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      .hero-right {
+        height: 280px;
+      }
+
+      .hero-headline {
+        font-size: clamp(32px, 10vw, 44px);
+      }
+
+      .hero-stats {
+        max-width: 100%;
+        padding: 12px 16px;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        max-width: 100%;
+      }
+
+      .hero-cta-group .btn-primary,
+      .hero-cta-group .btn-secondary {
+        width: 100%;
+        padding: 16px 20px;
+        font-size: 12px;
+      }
+
+      .portfolio-info {
+        padding: 16px 16px 20px;
+      }
+
+      .tech-badge {
+        font-size: 10px;
+        padding: 4px 10px;
+      }
+
+      /* Pricing amount sizing */
+      .pricing-amount {
+        font-size: 34px !important;
+      }
+
+      /* Contact info */
+      .contact-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 17px;
+        flex-shrink: 0;
+      }
+
+      /* Terminology cards */
+      .term-card {
+        padding: 20px 18px;
+        border-radius: 18px;
+      }
+
+      /* Footer */
+      .footer-social-links {
+        justify-content: flex-start;
+      }
+
+      /* About stats */
+      .about-stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-stat-card {
+        border-radius: 18px;
+        padding: 18px 14px;
+      }
+    }
+
+    /* ---- Smooth momentum scrolling on iOS ---- */
+    @supports (-webkit-overflow-scrolling: touch) {
+      .phone-categories,
+      .mobile-menu,
+      body {
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    /* ---- Reduce motion preference ---- */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -3848,12 +4346,12 @@
         </div>
 
         <!-- Hero Hand Mockup -->
-        <div class="hero-right" id="heroRight" style="height:620px;">
+        <div class="hero-right" id="heroRight">
           <div class="hero-phone-glow" aria-hidden="true"></div>
           <div class="hero-phone-wrap" id="heroPhoneWrap"
             style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
             <img src="hero.png" alt="AK Digital Marketing app on phone"
-              style="max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 40px 80px rgba(10,25,49,0.22));animation:heroImgFloat 6s ease-in-out infinite;" />
+              style="max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 40px 80px rgba(10,25,49,0.22));animation:heroImgFloat 6s ease-in-out infinite;display:block;" />
           </div>
         </div>
       </div>
@@ -3914,7 +4412,7 @@
         <!-- Wide card -->
         <div class="feature-card feature-card-wide reveal delay-1">
           <div
-            style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;position:relative;z-index:1;">
+            style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;position:relative;z-index:1;" class="feature-wide-inner">
             <div>
               <div class="feature-icon"><i class="fa-solid fa-qrcode" aria-hidden="true"></i></div>
               <div class="feature-title">Smart QR Code Generation</div>
@@ -4977,6 +5475,16 @@
       mobileMenu.setAttribute('aria-hidden', !open);
       document.body.style.overflow = open ? 'hidden' : '';
     });
+    // Close menu on body tap outside menu
+    document.addEventListener('click', (e) => {
+      if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    });
     mobileMenu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         mobileMenu.classList.remove('open');
@@ -5040,6 +5548,7 @@
       }
       function getCardW() {
         const gap = 24, cw = track.parentElement.offsetWidth;
+        if (vis === 1) return cw;
         return (cw - gap * (vis - 1)) / vis + gap;
       }
       function goTo(idx) {
