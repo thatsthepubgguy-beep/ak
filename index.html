@@ -562,7 +562,7 @@
     .nav-logo-icon {
       width: 44px;
       height: 44px;
-    
+
       border-radius: 14px;
       display: flex;
       align-items: center;
@@ -570,7 +570,7 @@
       font-family: var(--serif);
       font-size: 14px;
       font-weight: 800;
-      }
+    }
 
     .nav-logo-text {
       font-family: var(--serif);
@@ -727,7 +727,7 @@
 
     .mobile-menu {
       position: fixed;
-      inset: 80px 0 0 0;
+      inset: 68px 0 0 0;
       background: rgba(246, 250, 253, 0.97);
       backdrop-filter: blur(36px);
       z-index: 999;
@@ -735,9 +735,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 36px;
+      gap: 28px;
       transform: translateX(100%);
       transition: transform 0.5s var(--ease);
+      overflow-y: auto;
+      padding: 32px 20px;
     }
 
     [data-theme="dark"] .mobile-menu {
@@ -775,6 +777,12 @@
       overflow: hidden;
       padding-top: 80px;
       background: var(--bg);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding-top: 68px;
+      }
     }
 
     .hero-bg {
@@ -968,7 +976,7 @@
 
     .hero-phone {
       width: 265px;
-      
+
       background: var(--navy);
       border-radius: 38px;
       padding: 12px;
@@ -1310,8 +1318,15 @@
     }
 
     @keyframes heroImgFloat {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-18px); }
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-18px);
+      }
     }
 
     /* ================================================================ MARQUEE */
@@ -1904,6 +1919,13 @@
       gap: 12px;
       background: linear-gradient(135deg, var(--bg2), var(--light-b));
       padding: 24px;
+    }
+
+    .about-img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .about-img-placeholder i {
@@ -2743,6 +2765,7 @@
       position: relative;
       background: var(--navy);
     }
+
     .portfolio-img-wrap iframe {
       pointer-events: none;
       border: 0;
@@ -2754,20 +2777,8 @@
       transform: scale(0.5);
       transform-origin: top left;
     }
-    /* 4-col pricing responsive */
-    @media(max-width:1300px) {
-      .pricing-grid {
-        grid-template-columns: repeat(2,1fr) !important;
-        max-width: 100% !important;
-      }
-    }
-    @media(max-width:700px) {
-      .pricing-grid {
-        grid-template-columns: 1fr !important;
-        max-width: 480px !important;
-        margin: 0 auto !important;
-      }
-    }
+
+    /* pricing responsive handled in main block below */
 
     /* ================================================================ TERMINOLOGY SECTION */
     .terminology-section {
@@ -2776,12 +2787,14 @@
       z-index: 2;
       background: var(--bg2);
     }
+
     .terminology-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
       margin-top: 52px;
     }
+
     .term-card {
       background: var(--surface);
       border-radius: var(--r-lg);
@@ -2792,21 +2805,25 @@
       position: relative;
       overflow: hidden;
     }
+
     .term-card::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(150deg, rgba(255,255,255,0.4) 0%, transparent 55%);
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.4) 0%, transparent 55%);
       pointer-events: none;
       border-radius: inherit;
     }
+
     [data-theme="dark"] .term-card::before {
-      background: linear-gradient(150deg, rgba(255,255,255,0.03) 0%, transparent 55%);
+      background: linear-gradient(150deg, rgba(255, 255, 255, 0.03) 0%, transparent 55%);
     }
+
     .term-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--sh-d);
     }
+
     .term-term {
       font-family: var(--serif);
       font-size: 15px;
@@ -2819,10 +2836,12 @@
       position: relative;
       z-index: 1;
     }
+
     .term-term i {
       font-size: 13px;
       color: var(--accent);
     }
+
     .term-def {
       font-size: 13px;
       color: var(--muted);
@@ -2831,43 +2850,8 @@
       position: relative;
       z-index: 1;
     }
-    @media(max-width:900px) {
-      .terminology-grid { grid-template-columns: repeat(2,1fr); }
-    }
-    @media(max-width:600px) {
-      .terminology-grid { grid-template-columns: 1fr; }
-    }
 
-    /* ================================================================ EXTRA RESPONSIVE FIXES */
-    @media(max-width:600px) {
-      .hero-cta-group { justify-content: center; }
-      .about-inner { gap: 36px; }
-      .about-visual { height: auto; min-height: 340px; }
-      .about-img-main { width: 240px; height: 280px; position: relative; }
-      .about-img-sec { display: none; }
-      .about-visual { display: flex; justify-content: center; }
-      .showcase-phones { height: 320px; }
-      .showcase-phone-main { width: 180px; }
-      .contact-inner { gap: 36px; }
-      .hero-right { height: 380px; }
-      .section-title { font-size: clamp(28px, 7vw, 42px); }
-      .features-section, .portfolio-section, .showcase-section,
-      .about-section, .testimonials-section, .pricing-section,
-      .contact-section, .terminology-section { padding: 72px 0; }
-      .portfolio-grid { gap: 18px; }
-      .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .footer-bottom { flex-direction: column; align-items: flex-start; }
-      .footer-bottom-links { flex-wrap: wrap; gap: 12px; }
-      .nav-logo-sub { display: none; }
-      .lang-switcher { padding: 4px 5px; }
-      .lang-btn { padding: 4px 8px; font-size: 9px; }
-      .theme-toggle { width: 36px; height: 36px; font-size: 13px; }
-    }
-    @media(max-width:400px) {
-      .container { padding: 0 14px; }
-      .hero-badge { font-size: 9px; padding: 8px 16px; }
-      .btn-primary, .btn-secondary { padding: 13px 24px; font-size: 11px; }
-    }
+    /* terminology responsive handled below */
     .scroll-top {
       position: fixed;
       bottom: 36px;
@@ -2900,8 +2884,44 @@
       box-shadow: 0 14px 44px rgba(74, 127, 167, 0.5);
     }
 
-    /* ================================================================ RESPONSIVE */
-    @media(max-width:1100px) {
+    /* ================================================================
+       RESPONSIVE — Mobile-first, all breakpoints
+       1400px+ : Large desktops / wide monitors
+       1200px  : Standard desktops
+       1024px  : Small desktops / landscape tablets
+       900px   : Tablets (portrait + landscape)
+       768px   : Large phones / small tablets
+       600px   : Phones (large)
+       480px   : Phones (medium)
+       380px   : Phones (small / SE)
+       320px   : Minimum supported width
+    ================================================================ */
+
+    /* ---- 1200px: Tighten nav a bit ---- */
+    @media (max-width: 1200px) {
+      .nav-links {
+        gap: 18px;
+      }
+
+      .nav-links a {
+        font-size: 10.5px;
+      }
+
+      .hero-content {
+        gap: 52px;
+      }
+
+      .about-inner {
+        gap: 60px;
+      }
+
+      .showcase-inner {
+        gap: 60px;
+      }
+    }
+
+    /* ---- 1100px: Drop to 2-col grids ---- */
+    @media (max-width: 1100px) {
       .features-grid {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -2912,13 +2932,12 @@
 
       .features-header {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 14px;
       }
 
       .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 480px;
-        margin: 0 auto;
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 100% !important;
       }
 
       .pricing-card.recommended {
@@ -2929,64 +2948,33 @@
         transform: translateY(-12px);
       }
 
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .terminology-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .footer-top {
         grid-template-columns: 1fr 1fr;
         gap: 44px;
       }
 
-      .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .contact-inner {
+        gap: 60px;
       }
     }
 
-    @media(max-width:900px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 48px;
+    /* ---- 900px: Stack hero, hide desktop nav, single-col layouts ---- */
+    @media (max-width: 900px) {
+
+      /* Navbar */
+      .nav-links {
+        display: none;
       }
 
-      .hero-left {
-        align-items: center;
-      }
-
-      .hero-stats {
-        justify-content: center;
-      }
-
-      .hero-right {
-        height: 460px;
-      }
-
-      .hero-phone {
-        width: 210px;
-      }
-
-      .float-card-1 {
-        right: 0;
-      }
-
-      .float-card-2 {
-        left: 0;
-      }
-
-      .about-inner,
-      .showcase-inner,
-      .contact-inner {
-        grid-template-columns: 1fr;
-        gap: 54px;
-      }
-
-      .showcase-phones {
-        height: 400px;
-      }
-
-      .showcase-phone {
-        width: 190px;
-      }
-
-      .showcase-phone-left,
-      .showcase-phone-right {
+      .nav-right .btn-primary {
         display: none;
       }
 
@@ -2994,69 +2982,730 @@
         display: flex;
       }
 
-      .footer-top {
+      .lang-switcher {
+        display: flex;
+      }
+
+      .nav-logo-sub {
+        display: none;
+      }
+
+      .navbar-inner {
+        height: 68px;
+      }
+
+      /* Hero */
+      .hero-content {
         grid-template-columns: 1fr;
-        gap: 32px;
+        text-align: center;
+        gap: 0;
+        min-height: auto;
+        padding: 60px 0 48px;
+      }
+
+      .hero-left {
+        align-items: center;
+      }
+
+      .hero-sub {
+        max-width: 520px;
+        text-align: center;
+      }
+
+      .hero-stats {
+        justify-content: center;
+      }
+
+      .hero-cta-group {
+        justify-content: center;
+      }
+
+      .hero-right {
+        height: 420px;
+        order: -1;
+      }
+
+      .float-card {
+        display: none;
+      }
+
+      .hero-phone-glow {
+        display: none;
+      }
+
+      /* Sections */
+      .features-section,
+      .portfolio-section,
+      .showcase-section,
+      .about-section,
+      .testimonials-section,
+      .pricing-section,
+      .contact-section,
+      .terminology-section {
+        padding: 88px 0;
+      }
+
+      /* About - fix absolute positioned cards */
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .about-visual {
+        height: 320px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .about-img-card {
+        position: relative;
+      }
+
+      .about-img-main {
+        width: 280px;
+        height: 320px;
+        top: auto;
+        left: auto;
+      }
+
+      .about-img-sec {
+        display: none;
+      }
+
+      /* Showcase */
+      .showcase-inner {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .showcase-phones {
+        height: 380px;
+      }
+
+      .showcase-phone-main {
+        width: 200px;
+      }
+
+      .showcase-phone-left,
+      .showcase-phone-right {
+        display: none;
+      }
+
+      /* Contact */
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      /* Portfolio */
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Terminology */
+      .terminology-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* Footer */
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
       }
 
       .footer-bottom {
         flex-direction: column;
         align-items: flex-start;
-      }
-
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .lang-switcher {
-        display: flex;
-      }
-      .nav-right .btn-primary {
-        display: none;
+        gap: 10px;
       }
     }
 
-    @media(max-width:600px) {
-      .features-grid {
-        grid-template-columns: 1fr;
+    /* ---- 768px: Tablet portrait ---- */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
       }
 
-      .hero-phone {
-        width: 190px;
+      /* Hero */
+      .hero-right {
+        height: 360px;
+      }
+
+      .hero-badge {
+        font-size: 9.5px;
       }
 
       .hero-stats {
-        flex-direction: column;
-        gap: 18px;
+        gap: 24px;
+      }
+
+      /* Features */
+      .feature-card {
+        padding: 30px;
+      }
+
+      .features-section,
+      .portfolio-section,
+      .showcase-section,
+      .about-section,
+      .testimonials-section,
+      .pricing-section,
+      .contact-section,
+      .terminology-section {
+        padding: 76px 0;
+      }
+
+      /* Pricing */
+      .pricing-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 460px !important;
+        margin: 0 auto !important;
+      }
+
+      /* Testimonials */
+      .testimonial-card {
+        min-width: calc(50% - 12px);
+      }
+
+      /* Section text */
+      .section-subtitle {
+        font-size: 14px;
+      }
+
+      /* Contact form */
+      .contact-form-wrap {
+        padding: 40px 32px;
+      }
+
+      /* Footer */
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom-links {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    }
+
+    /* ---- 600px: Large phones ---- */
+    @media (max-width: 600px) {
+      .container {
+        padding: 0 18px;
+      }
+
+      /* Sections */
+      .features-section,
+      .portfolio-section,
+      .showcase-section,
+      .about-section,
+      .testimonials-section,
+      .pricing-section,
+      .contact-section,
+      .terminology-section {
+        padding: 64px 0;
+      }
+
+      /* Hero */
+      .hero {
+        padding-top: 68px;
+      }
+
+      .hero-content {
+        padding: 40px 0 36px;
+      }
+
+      .hero-right {
+        height: 300px;
+      }
+
+      .hero-stats {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px 24px;
       }
 
       .hero-stat-divider {
         display: none;
       }
 
-      .container {
-        padding: 0 20px;
+      .hero-stat-number {
+        font-size: 22px;
       }
 
+      .hero-stat-label {
+        font-size: 9px;
+      }
+
+      /* Features grid */
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 26px 22px;
+        border-radius: var(--r-lg);
+      }
+
+      .feature-icon {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 18px;
+      }
+
+      .feature-icon i {
+        font-size: 18px;
+      }
+
+      .feature-title {
+        font-size: 17px;
+      }
+
+      /* Portfolio */
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .portfolio-info {
+        padding: 20px;
+      }
+
+      .portfolio-title {
+        font-size: 16px;
+      }
+
+      /* Showcase */
+      .showcase-phones {
+        height: 300px;
+      }
+
+      .showcase-phone-main {
+        width: 170px;
+      }
+
+      .showcase-text-list {
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      /* About */
+      .about-inner {
+        gap: 32px;
+      }
+
+      .about-visual {
+        height: 260px;
+      }
+
+      .about-img-main {
+        width: 240px;
+        height: 280px;
+      }
+
+      .about-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .about-stat-num {
+        font-size: 32px;
+      }
+
+      .about-stat-card {
+        padding: 20px 16px;
+      }
+
+      /* Testimonials */
+      .testimonial-card {
+        min-width: 100%;
+        padding: 28px 22px;
+      }
+
+      .testimonials-section .section-title {
+        text-align: center;
+      }
+
+      /* Pricing */
+      .pricing-grid {
+        max-width: 100% !important;
+      }
+
+      .pricing-card {
+        padding: 26px 20px;
+        border-radius: var(--r-lg);
+      }
+
+      /* Contact */
       .contact-form-wrap {
-        padding: 32px 24px;
+        padding: 28px 20px;
+        border-radius: var(--r-lg);
       }
 
       .form-row {
         grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .contact-info-items {
+        gap: 20px;
+      }
+
+      /* Terminology */
+      .terminology-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .term-card {
+        padding: 22px 20px;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 60px 0 0;
+      }
+
+      .footer-top {
+        gap: 28px;
+      }
+
+      .footer-bottom {
+        padding: 20px 0;
+      }
+
+      .footer-copy {
+        font-size: 11px;
+      }
+
+      /* Nav */
+      .lang-switcher {
+        padding: 4px 5px;
+      }
+
+      .lang-btn {
+        padding: 4px 8px;
+        font-size: 9px;
+      }
+
+      .theme-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 13px;
+      }
+
+      .nav-right {
+        gap: 8px;
+      }
+
+      .navbar-inner {
+        height: 62px;
+      }
+
+      /* Scroll top */
+      .scroll-top {
+        bottom: 18px;
+        right: 18px;
+        width: 44px;
+        height: 44px;
+        font-size: 14px;
+      }
+
+      /* Section header */
+      .section-subtitle {
+        font-size: 13.5px;
+      }
+    }
+
+    /* ---- 480px: Medium phones ---- */
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      /* Sections */
+      .features-section,
+      .portfolio-section,
+      .showcase-section,
+      .about-section,
+      .testimonials-section,
+      .pricing-section,
+      .contact-section,
+      .terminology-section {
+        padding: 56px 0;
+      }
+
+      /* Hero */
+      .hero-right {
+        height: 260px;
+      }
+
+      .hero-badge {
+        font-size: 9px;
+        padding: 8px 14px;
+        gap: 7px;
+      }
+
+      .hero-badge::before {
+        width: 6px;
+        height: 6px;
+      }
+
+      .hero-cta-group {
+        gap: 12px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 13px 22px;
+        font-size: 10.5px;
+      }
+
+      /* Mobile menu */
+      .mobile-menu a {
+        font-size: 26px;
+      }
+
+      /* About */
+      .about-visual {
+        height: 220px;
+      }
+
+      .about-img-main {
+        width: 200px;
+        height: 240px;
       }
 
       .about-stats-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .testimonial-card {
-        min-width: 100%;
+      .about-stat-num {
+        font-size: 28px;
       }
 
-      .scroll-top {
-        bottom: 22px;
-        right: 22px;
+      /* Showcase */
+      .showcase-phones {
+        height: 260px;
+      }
+
+      .showcase-phone-main {
+        width: 150px;
+      }
+
+      /* Contact form */
+      .contact-form-wrap {
+        padding: 22px 16px;
+      }
+
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+
+      /* Testimonial */
+      .testimonial-card {
+        padding: 22px 18px;
+      }
+
+      .testimonial-text {
+        font-size: 13px;
+      }
+
+      /* Pricing card */
+      .pricing-amount {
+        font-size: 32px !important;
+      }
+
+      .pricing-feature-item {
+        font-size: 11.5px;
+      }
+
+      /* Terminology */
+      .terminology-section {
+        padding: 48px 0;
+      }
+
+      .terminology-grid {
+        gap: 12px;
+      }
+
+      /* Hero stats row */
+      .hero-stats {
+        gap: 8px 16px;
+      }
+    }
+
+    /* ---- 380px: Small phones (iPhone SE etc.) ---- */
+    @media (max-width: 380px) {
+      .container {
+        padding: 0 14px;
+      }
+
+      /* Hero */
+      .hero-right {
+        height: 230px;
+      }
+
+      .hero-cta-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 20px;
+        font-size: 10px;
+      }
+
+      /* Nav */
+      .nav-logo-text {
+        font-size: 13px;
+      }
+
+      .lang-btn {
+        padding: 3px 6px;
+        font-size: 8.5px;
+      }
+
+      .theme-toggle {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+      }
+
+      .nav-logo-icon {
+        width: 36px;
+        height: 36px;
+      }
+
+      .nav-right {
+        gap: 6px;
+      }
+
+      /* About */
+      .about-img-main {
+        width: 180px;
+        height: 210px;
+      }
+
+      .about-stat-card {
+        padding: 16px 12px;
+      }
+
+      .about-stat-num {
+        font-size: 24px;
+      }
+
+      /* Sections */
+      .features-section,
+      .portfolio-section,
+      .showcase-section,
+      .about-section,
+      .testimonials-section,
+      .pricing-section,
+      .contact-section,
+      .terminology-section {
+        padding: 48px 0;
+      }
+
+      /* Section label */
+      .section-label {
+        font-size: 9px;
+      }
+
+      .section-subtitle {
+        font-size: 13px;
+      }
+
+      /* Testimonials */
+      .testimonials-controls {
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .slider-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 12px;
+      }
+
+      /* Pricing */
+      .pricing-card {
+        padding: 22px 16px;
+      }
+
+      .pricing-plan-name {
+        font-size: 10px;
+      }
+
+      /* Contact */
+      .contact-form-wrap {
+        padding: 18px 14px;
+      }
+
+      .form-input,
+      .form-textarea,
+      .form-select {
+        padding: 12px 14px;
+        font-size: 13px;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 48px 0 0;
+      }
+
+      .footer-logo-text {
+        font-size: 18px;
+      }
+
+      .footer-tagline {
+        font-size: 12px;
+      }
+
+      .footer-bottom-links {
+        gap: 10px;
+      }
+
+      /* Mobile menu */
+      .mobile-menu a {
+        font-size: 22px;
+      }
+
+      .mobile-menu {
+        gap: 24px;
+      }
+    }
+
+    /* ---- 320px: Absolute minimum ---- */
+    @media (max-width: 320px) {
+      .container {
+        padding: 0 12px;
+      }
+
+      .nav-logo-icon {
+        display: none;
+      }
+
+      .hero-right {
+        height: 200px;
+      }
+
+      .about-img-main {
+        width: 160px;
+        height: 190px;
+      }
+
+      .mobile-menu a {
+        font-size: 20px;
       }
     }
   </style>
@@ -3068,7 +3717,7 @@
   <div class="loader" id="loader" role="status" aria-label="Loading">
     <div class="loader-sub"><img src="logo.png" alt=""></div>
     <div class="loader-logo"><span>AK</span> Digitals</div>
-    
+
     <div class="loader-rings">
       <div class="loader-ring"></div>
       <div class="loader-ring"></div>
@@ -3201,8 +3850,10 @@
         <!-- Hero Hand Mockup -->
         <div class="hero-right" id="heroRight" style="height:620px;">
           <div class="hero-phone-glow" aria-hidden="true"></div>
-          <div class="hero-phone-wrap" id="heroPhoneWrap" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-            <img src="hero.png" alt="AK Digital Marketing app on phone" style="max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 40px 80px rgba(10,25,49,0.22));animation:heroImgFloat 6s ease-in-out infinite;" />
+          <div class="hero-phone-wrap" id="heroPhoneWrap"
+            style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+            <img src="hero.png" alt="AK Digital Marketing app on phone"
+              style="max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 40px 80px rgba(10,25,49,0.22));animation:heroImgFloat 6s ease-in-out infinite;" />
           </div>
         </div>
       </div>
@@ -3250,10 +3901,12 @@
       <div class="features-header">
         <div>
           <div class="section-label reveal" data-i18n="features.label">Platform Features</div>
-          <h2 class="section-title reveal delay-1" id="features-title" data-i18n="features.title">Everything You Need to<br>Modernize Your Menu</h2>
+          <h2 class="section-title reveal delay-1" id="features-title" data-i18n="features.title">Everything You Need
+            to<br>Modernize Your Menu</h2>
         </div>
         <div class="features-header-right">
-          <p class="section-subtitle reveal delay-2" data-i18n="features.subtitle">A complete suite of tools designed for the hospitality industry —
+          <p class="section-subtitle reveal delay-2" data-i18n="features.subtitle">A complete suite of tools designed
+            for the hospitality industry —
             built for owners, loved by guests.</p>
         </div>
       </div>
@@ -3269,7 +3922,7 @@
                 your venue with full analytics — know exactly when and where guests are scanning.</div>
               <div class="feature-tag"><i class="fa-solid fa-star" aria-hidden="true"></i> Core Feature</div>
             </div>
-            
+
           </div>
         </div>
 
@@ -3319,8 +3972,10 @@
           <div class="section-label reveal">
             <i class="fa-solid fa-layer-group" aria-hidden="true"></i> Our Work
           </div>
-          <h2 class="section-title reveal delay-1" id="portfolio-title" data-i18n="portfolio.title">Previous Websites<br>We've Built</h2>
-          <p class="section-subtitle reveal delay-2" data-i18n="portfolio.subtitle">A selection of digital experiences crafted for hospitality
+          <h2 class="section-title reveal delay-1" id="portfolio-title" data-i18n="portfolio.title">Previous
+            Websites<br>We've Built</h2>
+          <p class="section-subtitle reveal delay-2" data-i18n="portfolio.subtitle">A selection of digital experiences
+            crafted for hospitality
             businesses — from intimate cafés to international hotel brands.</p>
         </div>
         <div class="reveal delay-3" style="margin-top:auto;padding-bottom:4px;">
@@ -3334,113 +3989,139 @@
 
         <!-- Card 1 - Sample1 (Cafe Menu) -->
         <a href="https://thatsthepubgguy-beep.github.io/sample1/" target="_blank" rel="noopener">
-        <div class="portfolio-card reveal delay-1">
-          <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
-            <iframe src="https://thatsthepubgguy-beep.github.io/sample1/" style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;" scrolling="no" loading="lazy" title="Sample Cafe Digital Menu preview"></iframe>
-          </div>
-          <div class="portfolio-info">
-            <div class="portfolio-tag"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Café &amp; Coffee</div>
-            <div class="portfolio-title">Sample Café — QR Digital Menu</div>
-            <div class="portfolio-desc">Full multilingual QR digital menu with 40+ items, Fasting/Non-Fasting filters, payment info, and customer reviews in 3 languages.</div>
-            <div class="portfolio-tech">
-              <span class="tech-badge">QR Menu</span>
-              <span class="tech-badge">Multilingual</span>
-              <span class="tech-badge">Reviews</span>
+          <div class="portfolio-card reveal delay-1">
+            <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
+              <iframe src="https://thatsthepubgguy-beep.github.io/sample1/"
+                style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;"
+                scrolling="no" loading="lazy" title="Sample Cafe Digital Menu preview"></iframe>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i> Café &amp; Coffee</div>
+              <div class="portfolio-title">Sample Café — QR Digital Menu</div>
+              <div class="portfolio-desc">Full multilingual QR digital menu with 40+ items, Fasting/Non-Fasting filters,
+                payment info, and customer reviews in 3 languages.</div>
+              <div class="portfolio-tech">
+                <span class="tech-badge">QR Menu</span>
+                <span class="tech-badge">Multilingual</span>
+                <span class="tech-badge">Reviews</span>
+              </div>
             </div>
           </div>
-        </div></a>
+        </a>
 
         <!-- Card 2 - Sample2 -->
         <a href="https://thatsthepubgguy-beep.github.io/sample2/" target="_blank" rel="noopener">
-        <div class="portfolio-card reveal delay-2">
-          <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
-            <iframe src="https://thatsthepubgguy-beep.github.io/sample2/" style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;" scrolling="no" loading="lazy" title="Sample 2 menu preview"></iframe>
-          </div>
-          <div class="portfolio-info">
-            <div class="portfolio-tag"><i class="fa-solid fa-utensils" aria-hidden="true"></i> Restaurant</div>
-            <div class="portfolio-title">Sample 2 — Digital Menu</div>
-            <div class="portfolio-desc">Premium digital menu system with custom branding, item photos, and smooth mobile experience tailored for a local restaurant.</div>
-            <div class="portfolio-tech">
-              <span class="tech-badge">QR Menu</span>
-              <span class="tech-badge">Custom Branding</span>
-              <span class="tech-badge">Photos</span>
+          <div class="portfolio-card reveal delay-2">
+            <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
+              <iframe src="https://thatsthepubgguy-beep.github.io/sample2/"
+                style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;"
+                scrolling="no" loading="lazy" title="Sample 2 menu preview"></iframe>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag"><i class="fa-solid fa-utensils" aria-hidden="true"></i> Restaurant</div>
+              <div class="portfolio-title">Sample 2 — Digital Menu</div>
+              <div class="portfolio-desc">Premium digital menu system with custom branding, item photos, and smooth
+                mobile experience tailored for a local restaurant.</div>
+              <div class="portfolio-tech">
+                <span class="tech-badge">QR Menu</span>
+                <span class="tech-badge">Custom Branding</span>
+                <span class="tech-badge">Photos</span>
+              </div>
             </div>
           </div>
-        </div></a>
+        </a>
 
         <!-- Card 3 - Sample-web (Yo Bar) -->
         <a href="https://thatsthepubgguy-beep.github.io/sample-web/" target="_blank" rel="noopener">
-        <div class="portfolio-card reveal delay-3">
-          <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
-            <iframe src="https://thatsthepubgguy-beep.github.io/sample-web/" style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;" scrolling="no" loading="lazy" title="Yo Bar Restaurant menu preview"></iframe>
-          </div>
-          <div class="portfolio-info">
-            <div class="portfolio-tag"><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> Bar &amp; Restaurant</div>
-            <div class="portfolio-title">Bar &amp; Restaurant — Full Menu</div>
-            <div class="portfolio-desc">Full-category menu with Breakfast, Lunch, Pizza, Asian, Pasta, Juices and more — with real food photos and smooth category navigation.</div>
-            <div class="portfolio-tech">
-              <span class="tech-badge">Full Menu</span>
-              <span class="tech-badge">Food Photos</span>
-              <span class="tech-badge">Categories</span>
+          <div class="portfolio-card reveal delay-3">
+            <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
+              <iframe src="https://thatsthepubgguy-beep.github.io/sample-web/"
+                style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;"
+                scrolling="no" loading="lazy" title="Yo Bar Restaurant menu preview"></iframe>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag"><i class="fa-solid fa-martini-glass-citrus" aria-hidden="true"></i> Bar &amp;
+                Restaurant</div>
+              <div class="portfolio-title">Bar &amp; Restaurant — Full Menu</div>
+              <div class="portfolio-desc">Full-category menu with Breakfast, Lunch, Pizza, Asian, Pasta, Juices and more
+                — with real food photos and smooth category navigation.</div>
+              <div class="portfolio-tech">
+                <span class="tech-badge">Full Menu</span>
+                <span class="tech-badge">Food Photos</span>
+                <span class="tech-badge">Categories</span>
+              </div>
             </div>
           </div>
-        </div></a>
+        </a>
 
         <!-- Card 4 - Sample-web2 -->
         <a href="https://thatsthepubgguy-beep.github.io/sample-web2/" target="_blank" rel="noopener">
-        <div class="portfolio-card reveal delay-1">
-          <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
-            <iframe src="https://thatsthepubgguy-beep.github.io/sample-web2/" style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;" scrolling="no" loading="lazy" title="Sample web 2 preview"></iframe>
-          </div>
-          <div class="portfolio-info">
-            <div class="portfolio-tag"><i class="fa-solid fa-store" aria-hidden="true"></i> Restaurant Website</div>
-            <div class="portfolio-title">Sample Web 2 — Landing Page</div>
-            <div class="portfolio-desc">Modern restaurant landing page with online menu, brand identity, and mobile-first design for a premium dining experience.</div>
-            <div class="portfolio-tech">
-              <span class="tech-badge">Landing Page</span>
-              <span class="tech-badge">Mobile-First</span>
-              <span class="tech-badge">Branding</span>
+          <div class="portfolio-card reveal delay-1">
+            <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
+              <iframe src="https://thatsthepubgguy-beep.github.io/sample-web2/"
+                style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;"
+                scrolling="no" loading="lazy" title="Sample web 2 preview"></iframe>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag"><i class="fa-solid fa-store" aria-hidden="true"></i> Restaurant Website</div>
+              <div class="portfolio-title">Sample Web 2 — Landing Page</div>
+              <div class="portfolio-desc">Modern restaurant landing page with online menu, brand identity, and
+                mobile-first design for a premium dining experience.</div>
+              <div class="portfolio-tech">
+                <span class="tech-badge">Landing Page</span>
+                <span class="tech-badge">Mobile-First</span>
+                <span class="tech-badge">Branding</span>
+              </div>
             </div>
           </div>
-        </div></a>
+        </a>
 
         <!-- Card 5 - AndOne Digital Menu -->
         <a href="https://ak-digital-mkt.github.io/AndOne1/" target="_blank" rel="noopener">
-        <div class="portfolio-card reveal delay-2">
-          <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
-            <iframe src="https://ak-digital-mkt.github.io/AndOne1/" style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;" scrolling="no" loading="lazy" title="AndOne Digital Menu preview"></iframe>
-          </div>
-          <div class="portfolio-info">
-            <div class="portfolio-tag"><i class="fa-solid fa-qrcode" aria-hidden="true"></i> Smart Menu</div>
-            <div class="portfolio-title">AndOne — Digital Menu App</div>
-            <div class="portfolio-desc">Application-like smart menu experience with EN/AM/OM language switching, payment info, and a beautiful dark-themed interface.</div>
-            <div class="portfolio-tech">
-              <span class="tech-badge">App-Like</span>
-              <span class="tech-badge">3 Languages</span>
-              <span class="tech-badge">Payment Info</span>
+          <div class="portfolio-card reveal delay-2">
+            <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
+              <iframe src="https://ak-digital-mkt.github.io/AndOne1/"
+                style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;"
+                scrolling="no" loading="lazy" title="AndOne Digital Menu preview"></iframe>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag"><i class="fa-solid fa-qrcode" aria-hidden="true"></i> Smart Menu</div>
+              <div class="portfolio-title">AndOne — Digital Menu App</div>
+              <div class="portfolio-desc">Application-like smart menu experience with EN/AM/OM language switching,
+                payment info, and a beautiful dark-themed interface.</div>
+              <div class="portfolio-tech">
+                <span class="tech-badge">App-Like</span>
+                <span class="tech-badge">3 Languages</span>
+                <span class="tech-badge">Payment Info</span>
+              </div>
             </div>
           </div>
-        </div></a>
+        </a>
 
         <!-- Card 6 - Zeru Business Card -->
         <a href="https://zeru-business-card.vercel.app" target="_blank" rel="noopener">
-        <div class="portfolio-card reveal delay-3">
-          <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
-            <iframe src="https://zeru-business-card.vercel.app" style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;" scrolling="no" loading="lazy" title="Zeru Business Card preview"></iframe>
-          </div>
-          <div class="portfolio-info">
-            <div class="portfolio-tag"><i class="fa-solid fa-id-card" aria-hidden="true"></i> Digital Card</div>
-            <div class="portfolio-title">Zeru — Digital Business Card</div>
-            <div class="portfolio-desc">Elegant digital business card / link-in-bio page with social media links, contact saving, and professional profile layout.</div>
-            <div class="portfolio-tech">
-              <span class="tech-badge">Business Card</span>
-              <span class="tech-badge">Link Page</span>
-              <span class="tech-badge">Mobile</span>
+          <div class="portfolio-card reveal delay-3">
+            <div class="portfolio-img-wrap" style="position:relative;background:#0A1931;">
+              <iframe src="https://zeru-business-card.vercel.app"
+                style="width:100%;height:100%;border:0;position:absolute;inset:0;pointer-events:none;transform:scale(0.5);transform-origin:top left;width:200%;height:200%;"
+                scrolling="no" loading="lazy" title="Zeru Business Card preview"></iframe>
+            </div>
+            <div class="portfolio-info">
+              <div class="portfolio-tag"><i class="fa-solid fa-id-card" aria-hidden="true"></i> Digital Card</div>
+              <div class="portfolio-title">Zeru — Digital Business Card</div>
+              <div class="portfolio-desc">Elegant digital business card / link-in-bio page with social media links,
+                contact saving, and professional profile layout.</div>
+              <div class="portfolio-tech">
+                <span class="tech-badge">Business Card</span>
+                <span class="tech-badge">Link Page</span>
+                <span class="tech-badge">Mobile</span>
+              </div>
             </div>
           </div>
-        </div></a>
+        </a>
 
-      </div>    </div>
+      </div>
+    </div>
   </section>
 
   <div class="section-divider" aria-hidden="true"></div>
@@ -3450,12 +4131,14 @@
     <div class="container">
       <div class="showcase-inner">
         <div class="showcase-poster reveal-left" aria-label="AK Digital Marketing app showcase">
-          <img src="showcase.png" alt="Order food from 1 second moments — AK Digital Marketing app" style="width:100%;max-width:480px;display:block;margin:0 auto;" />
+          <img src="showcase.png" alt="Order food from 1 second moments — AK Digital Marketing app"
+            style="width:100%;max-width:480px;display:block;margin:0 auto;" />
         </div>
         <div class="reveal-right">
           <div class="section-label">Live Showcase</div>
           <h2 class="section-title" id="showcase-title" data-i18n="showcase.title">Beautiful Menus for Every Venue</h2>
-          <p class="section-subtitle" data-i18n="showcase.subtitle">From intimate cafés to luxury hotel chains, our digital menu platform adapts to
+          <p class="section-subtitle" data-i18n="showcase.subtitle">From intimate cafés to luxury hotel chains, our
+            digital menu platform adapts to
             your brand identity — visually stunning on every device.</p>
           <div class="showcase-text-list">
             <div class="showcase-text-item reveal delay-1">
@@ -3505,8 +4188,8 @@
         <div class="about-visual reveal-left" aria-hidden="true">
           <div class="about-img-card about-img-main">
             <div class="about-img-placeholder">
-             <img src="QR1.png" alt="">
-              
+              <img src="QR1.png" alt="">
+
             </div>
           </div>
           <div class="about-img-card about-img-sec">
@@ -3517,8 +4200,11 @@
         </div>
         <div class="reveal-right">
           <div class="section-label">Our Story</div>
-          <h2 class="section-title" id="about-title" data-i18n="about.title">Built for Ethiopian Businesses by People Who Love This Industry</h2>
-          <p class="section-subtitle" data-i18n="about.subtitle">We started AK Digital-Marketing in Adama, Ethiopia after seeing how many incredible restaurants were losing customers to outdated paper menus. We built a platform that makes digital transformation effortless — no tech skills required.</p>
+          <h2 class="section-title" id="about-title" data-i18n="about.title">Built for Ethiopian Businesses by People
+            Who Love This Industry</h2>
+          <p class="section-subtitle" data-i18n="about.subtitle">We started AK Digital-Marketing in Adama, Ethiopia
+            after seeing how many incredible restaurants were losing customers to outdated paper menus. We built a
+            platform that makes digital transformation effortless — no tech skills required.</p>
           <div class="about-stats-grid" role="list">
             <div class="about-stat-card reveal delay-1" role="listitem">
               <div class="about-stat-num"><span class="counter" data-target="20">0</span>+</div>
@@ -3654,8 +4340,11 @@
       <div style="text-align:center;max-width:580px;margin:0 auto;position:relative;z-index:1;">
         <div class="section-label reveal" style="justify-content:center;"><i class="fa-solid fa-tag"
             aria-hidden="true"></i> Transparent Pricing</div>
-        <h2 class="section-title reveal delay-1" id="pricing-title" data-i18n="pricing.title">Simple Plans for Every Business</h2>
-        <p class="section-subtitle reveal delay-2" style="margin:0 auto;text-align:center;" data-i18n="pricing.subtitle">Elevating your customers' experience one scan at a time. One-time setup, free updates included.</p>
+        <h2 class="section-title reveal delay-1" id="pricing-title" data-i18n="pricing.title">Simple Plans for Every
+          Business</h2>
+        <p class="section-subtitle reveal delay-2" style="margin:0 auto;text-align:center;"
+          data-i18n="pricing.subtitle">Elevating your customers' experience one scan at a time. One-time setup, free
+          updates included.</p>
       </div>
       <div style="margin-top:48px;"></div>
       <div class="pricing-grid" style="grid-template-columns:repeat(4,1fr);max-width:100%;">
@@ -3671,15 +4360,35 @@
           <div class="pricing-desc">Perfect for small cafés starting their digital journey.</div>
           <div class="pricing-divider"></div>
           <div class="pricing-features">
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Real-time menu updates</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Food &amp; drink names with prices</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Easy-to-use digital menu</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Mobile-friendly access</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 2 Months free updates</div>
-            <div class="pricing-feature-item disabled"><div class="check-icon"><i class="fa-solid fa-xmark" style="font-size:8px;"></i></div> Food pictures</div>
-            <div class="pricing-feature-item disabled"><div class="check-icon"><i class="fa-solid fa-xmark" style="font-size:8px;"></i></div> Multi-language</div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Real-time menu
+              updates
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Food &amp; drink
+              names with prices
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Easy-to-use digital
+              menu
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Mobile-friendly
+              access
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 2 Months free
+              updates
+            </div>
+            <div class="pricing-feature-item disabled">
+              <div class="check-icon"><i class="fa-solid fa-xmark" style="font-size:8px;"></i></div> Food pictures
+            </div>
+            <div class="pricing-feature-item disabled">
+              <div class="check-icon"><i class="fa-solid fa-xmark" style="font-size:8px;"></i></div> Multi-language
+            </div>
           </div>
-          <div class="pricing-cta"><a href="#contact" class="btn-secondary"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> <span>Get Started</span></a></div>
+          <div class="pricing-cta"><a href="#contact" class="btn-secondary"><i class="fa-solid fa-arrow-right"
+                aria-hidden="true"></i> <span>Get Started</span></a></div>
         </div>
 
         <!-- STANDARD -->
@@ -3693,15 +4402,35 @@
           <div class="pricing-desc">Everything in Starter plus food photos and language options.</div>
           <div class="pricing-divider"></div>
           <div class="pricing-features">
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Everything in Starter</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Food pictures included</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 2 Language options</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Attractive menu layout</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 3 Months free updates</div>
-            <div class="pricing-feature-item disabled"><div class="check-icon"><i class="fa-solid fa-xmark" style="font-size:8px;"></i></div> Fasting / Non-Fasting filter</div>
-            <div class="pricing-feature-item disabled"><div class="check-icon"><i class="fa-solid fa-xmark" style="font-size:8px;"></i></div> Premium design</div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Everything in
+              Starter
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Food pictures
+              included
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 2 Language options
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Attractive menu
+              layout
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 3 Months free
+              updates
+            </div>
+            <div class="pricing-feature-item disabled">
+              <div class="check-icon"><i class="fa-solid fa-xmark" style="font-size:8px;"></i></div> Fasting /
+              Non-Fasting filter
+            </div>
+            <div class="pricing-feature-item disabled">
+              <div class="check-icon"><i class="fa-solid fa-xmark" style="font-size:8px;"></i></div> Premium design
+            </div>
           </div>
-          <div class="pricing-cta"><a href="#contact" class="btn-secondary"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> <span>Get Started</span></a></div>
+          <div class="pricing-cta"><a href="#contact" class="btn-secondary"><i class="fa-solid fa-arrow-right"
+                aria-hidden="true"></i> <span>Get Started</span></a></div>
         </div>
 
         <!-- PREMIUM -->
@@ -3716,14 +4445,31 @@
           <div class="pricing-desc">Everything in Standard plus 3 languages and premium design.</div>
           <div class="pricing-divider" style="background:rgba(74,127,167,0.2);"></div>
           <div class="pricing-features">
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Everything in Standard</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 3 Language options</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Fasting / Non-Fasting filter</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Premium menu design</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Better customer experience</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 6 Months free updates</div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Everything in
+              Standard
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 3 Language options
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Fasting /
+              Non-Fasting filter
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Premium menu design
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Better customer
+              experience
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 6 Months free
+              updates
+            </div>
           </div>
-          <div class="pricing-cta"><a href="#contact" class="btn-primary"><i class="fa-solid fa-rocket" aria-hidden="true"></i> <span>Get Premium</span></a></div>
+          <div class="pricing-cta"><a href="#contact" class="btn-primary"><i class="fa-solid fa-rocket"
+                aria-hidden="true"></i> <span>Get Premium</span></a></div>
         </div>
 
         <!-- ULTIMATE -->
@@ -3737,14 +4483,30 @@
           <div class="pricing-desc">The full app-like experience with 1 year of free updates.</div>
           <div class="pricing-divider"></div>
           <div class="pricing-features">
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Everything in Premium</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Application-like experience</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Theme customization</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Modern &amp; highly attractive UI</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Advanced features</div>
-            <div class="pricing-feature-item"><div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 1 Year free updates</div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Everything in
+              Premium
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Application-like
+              experience
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Theme customization
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Modern &amp; highly
+              attractive UI
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> Advanced features
+            </div>
+            <div class="pricing-feature-item">
+              <div class="check-icon"><i class="fa-solid fa-check" style="font-size:8px;"></i></div> 1 Year free updates
+            </div>
           </div>
-          <div class="pricing-cta"><a href="#contact" class="btn-secondary"><i class="fa-solid fa-crown" aria-hidden="true"></i> <span>Go Ultimate</span></a></div>
+          <div class="pricing-cta"><a href="#contact" class="btn-secondary"><i class="fa-solid fa-crown"
+                aria-hidden="true"></i> <span>Go Ultimate</span></a></div>
         </div>
 
       </div>
@@ -3757,46 +4519,66 @@
   <section class="terminology-section" id="terminology" aria-labelledby="terminology-title">
     <div class="container">
       <div style="max-width:640px;">
-        <div class="section-label reveal"><i class="fa-solid fa-book-open" aria-hidden="true"></i> <span data-i18n="term.label">Key Terminology</span></div>
-        <h2 class="section-title reveal delay-1" id="terminology-title" data-i18n="term.title">Understanding Digital Menu Solutions</h2>
-        <p class="section-subtitle reveal delay-2" data-i18n="term.subtitle">New to QR menus? Here are the key terms you'll encounter when working with us.</p>
+        <div class="section-label reveal"><i class="fa-solid fa-book-open" aria-hidden="true"></i> <span
+            data-i18n="term.label">Key Terminology</span></div>
+        <h2 class="section-title reveal delay-1" id="terminology-title" data-i18n="term.title">Understanding Digital
+          Menu Solutions</h2>
+        <p class="section-subtitle reveal delay-2" data-i18n="term.subtitle">New to QR menus? Here are the key terms
+          you'll encounter when working with us.</p>
       </div>
       <div class="terminology-grid">
         <div class="term-card reveal delay-1">
           <div class="term-term"><i class="fa-solid fa-qrcode"></i> <span data-i18n="term.qr.term">QR Code</span></div>
-          <div class="term-def" data-i18n="term.qr.def">A scannable 2D barcode customers point their phone camera at to instantly open your digital menu — no app download needed.</div>
+          <div class="term-def" data-i18n="term.qr.def">A scannable 2D barcode customers point their phone camera at to
+            instantly open your digital menu — no app download needed.</div>
         </div>
         <div class="term-card reveal delay-2">
-          <div class="term-term"><i class="fa-solid fa-mobile-screen"></i> <span data-i18n="term.digitalmenu.term">Digital Menu</span></div>
-          <div class="term-def" data-i18n="term.digitalmenu.def">A fully interactive, web-based version of your menu that opens on any smartphone. Update prices, items, and photos in real time without reprinting.</div>
+          <div class="term-term"><i class="fa-solid fa-mobile-screen"></i> <span
+              data-i18n="term.digitalmenu.term">Digital Menu</span></div>
+          <div class="term-def" data-i18n="term.digitalmenu.def">A fully interactive, web-based version of your menu
+            that opens on any smartphone. Update prices, items, and photos in real time without reprinting.</div>
         </div>
         <div class="term-card reveal delay-3">
-          <div class="term-term"><i class="fa-solid fa-globe"></i> <span data-i18n="term.multilang.term">Multi-Language</span></div>
-          <div class="term-def" data-i18n="term.multilang.def">Your menu displayed in multiple languages (e.g. English, Amharic, Afan Oromo) so every guest can browse in their preferred language.</div>
+          <div class="term-term"><i class="fa-solid fa-globe"></i> <span
+              data-i18n="term.multilang.term">Multi-Language</span></div>
+          <div class="term-def" data-i18n="term.multilang.def">Your menu displayed in multiple languages (e.g. English,
+            Amharic, Afan Oromo) so every guest can browse in their preferred language.</div>
         </div>
         <div class="term-card reveal delay-1">
-          <div class="term-term"><i class="fa-solid fa-leaf"></i> <span data-i18n="term.fasting.term">Fasting / Non-Fasting Filter</span></div>
-          <div class="term-def" data-i18n="term.fasting.def">A one-tap filter that shows only fasting-friendly (vegan/Orthodox) or non-fasting dishes — essential for Ethiopian hospitality businesses.</div>
+          <div class="term-term"><i class="fa-solid fa-leaf"></i> <span data-i18n="term.fasting.term">Fasting /
+              Non-Fasting Filter</span></div>
+          <div class="term-def" data-i18n="term.fasting.def">A one-tap filter that shows only fasting-friendly
+            (vegan/Orthodox) or non-fasting dishes — essential for Ethiopian hospitality businesses.</div>
         </div>
         <div class="term-card reveal delay-2">
-          <div class="term-term"><i class="fa-solid fa-palette"></i> <span data-i18n="term.branding.term">Custom Branding</span></div>
-          <div class="term-def" data-i18n="term.branding.def">Your logo, brand colors, and typography applied to your digital menu so it looks and feels like your business — not a generic template.</div>
+          <div class="term-term"><i class="fa-solid fa-palette"></i> <span data-i18n="term.branding.term">Custom
+              Branding</span></div>
+          <div class="term-def" data-i18n="term.branding.def">Your logo, brand colors, and typography applied to your
+            digital menu so it looks and feels like your business — not a generic template.</div>
         </div>
         <div class="term-card reveal delay-3">
-          <div class="term-term"><i class="fa-solid fa-rotate"></i> <span data-i18n="term.updates.term">Free Updates</span></div>
-          <div class="term-def" data-i18n="term.updates.def">During your update period, we handle all menu changes, price edits, and new item additions — no extra fees, no waiting.</div>
+          <div class="term-term"><i class="fa-solid fa-rotate"></i> <span data-i18n="term.updates.term">Free
+              Updates</span></div>
+          <div class="term-def" data-i18n="term.updates.def">During your update period, we handle all menu changes,
+            price edits, and new item additions — no extra fees, no waiting.</div>
         </div>
         <div class="term-card reveal delay-1">
-          <div class="term-term"><i class="fa-solid fa-chart-line"></i> <span data-i18n="term.analytics.term">Analytics Dashboard</span></div>
-          <div class="term-def" data-i18n="term.analytics.def">A panel showing how many times your menu was scanned, which items were viewed most, and peak hours — helping you make smarter business decisions.</div>
+          <div class="term-term"><i class="fa-solid fa-chart-line"></i> <span data-i18n="term.analytics.term">Analytics
+              Dashboard</span></div>
+          <div class="term-def" data-i18n="term.analytics.def">A panel showing how many times your menu was scanned,
+            which items were viewed most, and peak hours — helping you make smarter business decisions.</div>
         </div>
         <div class="term-card reveal delay-2">
-          <div class="term-term"><i class="fa-solid fa-wifi"></i> <span data-i18n="term.pwa.term">PWA (Progressive Web App)</span></div>
-          <div class="term-def" data-i18n="term.pwa.def">Technology that lets your menu load even with poor or no internet connection, so guests always see your full menu regardless of signal quality.</div>
+          <div class="term-term"><i class="fa-solid fa-wifi"></i> <span data-i18n="term.pwa.term">PWA (Progressive Web
+              App)</span></div>
+          <div class="term-def" data-i18n="term.pwa.def">Technology that lets your menu load even with poor or no
+            internet connection, so guests always see your full menu regardless of signal quality.</div>
         </div>
         <div class="term-card reveal delay-3">
-          <div class="term-term"><i class="fa-solid fa-tag"></i> <span data-i18n="term.onetime.term">One-Time Setup Fee</span></div>
-          <div class="term-def" data-i18n="term.onetime.def">You pay once for your digital menu to be built and launched. There are no monthly subscriptions — just optional renewal for extended free updates.</div>
+          <div class="term-term"><i class="fa-solid fa-tag"></i> <span data-i18n="term.onetime.term">One-Time Setup
+              Fee</span></div>
+          <div class="term-def" data-i18n="term.onetime.def">You pay once for your digital menu to be built and
+            launched. There are no monthly subscriptions — just optional renewal for extended free updates.</div>
         </div>
       </div>
     </div>
@@ -3805,9 +4587,12 @@
     <div class="container">
       <div class="contact-inner">
         <div>
-          <div class="section-label reveal"><i class="fa-solid fa-envelope" aria-hidden="true"></i> <span data-i18n="contact.label">Get In Touch</span></div>
-          <h2 class="section-title reveal delay-1" id="contact-title" data-i18n="contact.title">Let's Transform Your Business Together</h2>
-          <p class="section-subtitle reveal delay-2" data-i18n="contact.subtitle">Have questions? Ready to launch? Our team typically responds within
+          <div class="section-label reveal"><i class="fa-solid fa-envelope" aria-hidden="true"></i> <span
+              data-i18n="contact.label">Get In Touch</span></div>
+          <h2 class="section-title reveal delay-1" id="contact-title" data-i18n="contact.title">Let's Transform Your
+            Business Together</h2>
+          <p class="section-subtitle reveal delay-2" data-i18n="contact.subtitle">Have questions? Ready to launch? Our
+            team typically responds within
             2 hours during business hours.</p>
           <div class="contact-info-items">
             <div class="contact-info-item reveal delay-1">
@@ -3886,7 +4671,8 @@
             </div>
             <div class="form-submit">
               <button type="submit" class="btn-primary">
-                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> <span data-i18n="form.send">Send Message</span>
+                <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> <span data-i18n="form.send">Send
+                  Message</span>
               </button>
             </div>
           </form>
