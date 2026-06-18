@@ -3,7 +3,9 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="format-detection" content="telephone=no" />
   <meta name="theme-color" content="#F6FAFD" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#060E1A" media="(prefers-color-scheme: dark)" />
   <meta name="mobile-web-app-capable" content="yes" />
@@ -12,12 +14,12 @@
   <title>AK Digital-Marketing | QR Digital Menu Solutions</title>
   <meta name="description"
     content="Elevating your customers experience one scan at a time. Premium QR-based digital menu solutions for restaurants, cafés, lounges, and hotels." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
 
   <script>
     const SITE = {
@@ -28,7 +30,7 @@
       location: "Adama, Ethiopia",
       instagram: "#",
       linkedin: "#",
-      facebook: "#",
+      tiktok: "#",
       whatsapp: "#",
       telegram: "#",
       stat1_number: "5+", stat1_label: "Businesses Served",
@@ -3117,13 +3119,20 @@
       }
     }
   </style>
+
+  <!-- Performance: Resource Hints -->
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" /></noscript>
+<base target="_blank">
 </head>
 
 <body>
 
   <!-- LOADER -->
   <div class="loader" id="loader" role="status" aria-label="Loading">
-    <div class="loader-sub"><img src="logo.png" alt="" id="loaderLogo"></div>
+    <div class="loader-sub"><img src="logo.png" alt="" id="loaderLogo" decoding="async"></div>
     <div class="loader-logo" id="loaderName">Loading...</div>
     <div class="loader-rings">
       <div class="loader-ring"></div>
@@ -3250,7 +3259,7 @@
           <div class="hero-phone-glow"></div>
           <div id="heroPhoneWrap"
             style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-            <img src="hero.png" alt="AK Digital Marketing app on phone"
+            <img src="hero.png" alt="AK Digital Marketing app on phone" fetchpriority="high" decoding="async"
               style="max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 40px 80px rgba(10,25,49,.22));animation:heroImgFloat 6s ease-in-out infinite;display:block;" />
           </div>
         </div>
@@ -3521,7 +3530,7 @@
     <div class="container">
       <div class="showcase-inner">
         <div class="showcase-poster reveal-left">
-          <img src="showcase.png" alt="AK Digital Marketing app showcase"
+          <img src="showcase.png" alt="AK Digital Marketing app showcase" loading="lazy" decoding="async"
             style="width:100%;max-width:480px;display:block;margin:0 auto;" />
         </div>
         <div class="reveal-right">
@@ -3568,10 +3577,10 @@
       <div class="about-inner">
         <div class="about-visual reveal-left">
           <div class="about-img-card about-img-main">
-            <div class="about-img-placeholder"><img src="QR1.png" alt=""></div>
+            <div class="about-img-placeholder"><img src="QR1.png" alt="" loading="lazy" decoding="async"></div>
           </div>
           <div class="about-img-card about-img-sec">
-            <div class="about-img-placeholder"><img src="QR2.png" alt=""></div>
+            <div class="about-img-placeholder"><img src="QR2.png" alt="" loading="lazy" decoding="async"></div>
           </div>
         </div>
         <div class="reveal-right">
@@ -3969,11 +3978,11 @@
                 class="fa-brands fa-instagram"></i></a>
             <a id="socialLinkedin" href="#" class="social-icon-btn" aria-label="LinkedIn"><i
                 class="fa-brands fa-linkedin-in"></i></a>
-            <a id="socialFacebook" href="#" class="social-icon-btn" aria-label="Facebook"><i
-                class="fa-brands fa-facebook-f"></i></a>
+            <a id="socialTiktok" href="https://www.tiktok.com/@ak_digital.marketing?is_from_webapp=1&sender_device=pc" class="social-icon-btn" aria-label="TikTok"><i
+                class="fa-brands fa-tiktok"></i></a>
             <a id="socialWhatsapp" href="#" class="social-icon-btn" aria-label="WhatsApp"><i
                 class="fa-brands fa-whatsapp"></i></a>
-            <a id="socialTelegram" href="#" class="social-icon-btn" aria-label="Telegram"><i
+            <a id="socialTelegram" href="https://t.me/ak_digital_mkt" class="social-icon-btn" aria-label="Telegram"><i
                 class="fa-brands fa-telegram"></i></a>
           </div>
         </div>
@@ -3998,9 +4007,9 @@
             <a id="footerLinkedin" href="#" class="social-icon-btn"
               style="background:rgba(255,255,255,.06);color:rgba(179,207,229,.6);border-color:rgba(255,255,255,.08);"
               aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a id="footerFacebook" href="#" class="social-icon-btn"
+            <a id="footerTiktok" href="https://www.tiktok.com/@ak_digital.marketing?is_from_webapp=1&sender_device=pc" class="social-icon-btn"
               style="background:rgba(255,255,255,.06);color:rgba(179,207,229,.6);border-color:rgba(255,255,255,.08);"
-              aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
           </div>
         </div>
         <div>
@@ -4091,10 +4100,10 @@
       setHref('footerWhatsapp', SITE.whatsapp);
       setHref('footerInstagram', SITE.instagram);
       setHref('footerLinkedin', SITE.linkedin);
-      setHref('footerFacebook', SITE.facebook);
+      setHref('footerTiktok', SITE.tiktok);
       setHref('socialInstagram', SITE.instagram);
       setHref('socialLinkedin', SITE.linkedin);
-      setHref('socialFacebook', SITE.facebook);
+      setHref('socialTiktok', SITE.tiktok);
       setHref('socialWhatsapp', SITE.whatsapp);
       setHref('socialTelegram', SITE.telegram);
       setTxt('stat1Val', SITE.stat1_number); setTxt('stat1Label', SITE.stat1_label);
