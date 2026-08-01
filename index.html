@@ -17,7 +17,7 @@
 
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-  
+
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /></noscript>
 
@@ -167,6 +167,36 @@
       background: var(--accent);
       border-radius: 3px;
     }
+
+    /* ================= TELET PATTERN — PARALLAX BACKGROUND STRIPS ================= */
+    .telet-strip{
+      position:fixed;
+      top:0;
+      height:100vh;
+      width:110px;
+      background-image:url('telet-pattern.svg');
+      background-repeat:repeat-y;
+      background-position:0 0;
+      background-size:110px 283px; /* keeps the 280x720 source tile's aspect ratio */
+      opacity:.14;
+      pointer-events:none;
+      z-index:1;
+      -webkit-mask-image:linear-gradient(to bottom, transparent, black 6%, black 94%, transparent);
+      mask-image:linear-gradient(to bottom, transparent, black 6%, black 94%, transparent);
+      will-change:background-position;
+      transition:opacity .6s ease;
+    }
+    [data-theme="dark"] .telet-strip{ opacity:.22; }
+    .telet-strip.telet-left{ left:0; }
+    .telet-strip.telet-right{ right:0; transform:scaleX(-1); }
+
+    @media(min-width:1500px){
+      .telet-strip{ width:130px; background-size:130px 335px; }
+    }
+    @media(max-width:1023px){
+      .telet-strip{ display:none; }
+    }
+    /* =============================================================================== */
 
     .container {
       max-width: 1200px;
@@ -3133,6 +3163,10 @@
 
 <body>
 
+  <!-- TELET PATTERN — PARALLAX BACKGROUND STRIPS (decorative, behind all content) -->
+  <div class="telet-strip telet-left" aria-hidden="true"></div>
+  <div class="telet-strip telet-right" aria-hidden="true"></div>
+
   <!-- LOADER -->
   <div class="loader" id="loader" role="status" aria-label="Loading">
     <div class="loader-sub"><img src="logo.png" alt="" id="loaderLogo" decoding="async"></div>
@@ -3636,8 +3670,6 @@
   </section>
 
   <div class="section-divider" aria-hidden="true"></div>
-
- 
 
   <div class="section-divider" aria-hidden="true"></div>
 
@@ -4341,6 +4373,25 @@
       }
       window.addEventListener('scroll', () => sy = window.scrollY, { passive: true });
       tick();
+    })();
+
+    /* ===== TELET PATTERN — PARALLAX SCROLL ===== */
+    (function () {
+      const left = document.querySelector('.telet-left');
+      const right = document.querySelector('.telet-right');
+      if (!left || !right) return;
+      const rate = 0.22;   // drift speed relative to page scroll
+      const tileH = 283;   // must match CSS background-size height
+      let ticking = false;
+      function updateTelet() {
+        const offset = (window.scrollY * rate) % tileH;
+        left.style.backgroundPositionY = offset + 'px';
+        right.style.backgroundPositionY = offset + 'px';
+        ticking = false;
+      }
+      window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(updateTelet); ticking = true; }
+      }, { passive: true });
     })();
   </script>
 </body>
